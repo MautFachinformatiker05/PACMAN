@@ -27,6 +27,12 @@ public class Game extends JFrame{
 		spiel.setVisible(true);
 		
 		while(running && feld.pac_leben!=0) {
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			feld.update();
 		}
 		

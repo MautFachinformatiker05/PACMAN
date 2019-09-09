@@ -92,6 +92,10 @@ public class Spielfeld extends JPanel{
 			}
 			System.out.println("");
 		}
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
 	}
 
 	public void update()
@@ -104,14 +108,14 @@ public class Spielfeld extends JPanel{
 		int [] vx =  {-1, 0, +1, 0}; 
 		int [] vy =  {0, -1, 0, +1};
 		
-		int x = pac_x+vx[0];
-		int y = pac_x+vy[0];
+		int x = pac_x+vx[pac_richtung];
+		int y = pac_x+vy[pac_richtung];
 
 
 		if(feld[x][y]!=1)
 		{
-			pac_x+=vx[0];
-			pac_y+=vy[0];
+			pac_x+=vx[pac_richtung];
+			pac_y+=vy[pac_richtung];
 		}
 
 	}
