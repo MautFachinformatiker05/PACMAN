@@ -2,6 +2,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class Game extends JFrame{
 	
 	public Game() {
@@ -19,7 +20,9 @@ public class Game extends JFrame{
 		spiel.add(feld);
 		spiel.getContentPane().setPreferredSize(new Dimension(feld.breite,feld.hoehe));
 		spiel.pack();
+		spiel.setVisible(true);
 		
 		feld.ausgabe_konsole();
+		System.out.println("TEST ABGESCHLOSSEN");
 	}
 }

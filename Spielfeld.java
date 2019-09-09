@@ -1,6 +1,6 @@
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Spielfeld extends JPanel{
 
 	public final int NICHTS = 0;
