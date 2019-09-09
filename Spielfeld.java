@@ -103,11 +103,16 @@ public class Spielfeld extends JPanel{
 	public void pac_move() {
 		int [] vx =  {-1, 0, +1, 0}; 
 		int [] vy =  {0, -1, 0, +1};
+		
+		int x = pac_x+vx[0];
+		int y = pac_x+vy[0];
 
 
-		//if(pac_x+vx[0]==feld[] && pac_y+vy[0])
-		//	pac_x+=vx[0];
-		//pac_y+=vy[0];
+		if(feld[x][y]!=1)
+		{
+			pac_x+=vx[0];
+			pac_y+=vy[0];
+		}
 
 	}
 
