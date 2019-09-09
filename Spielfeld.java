@@ -92,9 +92,11 @@ public class Spielfeld extends JPanel{
 		}
 	}
 	
+	/*
 	public static void main(String[] args) {
 		
 		Spielfeld spiel = new Spielfeld();
 		spiel.ausgabe_konsole();
 	}
+	*/
 }
