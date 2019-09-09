@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Game extends JFrame{
 	
+	public static boolean running=true;
+	public static boolean frightened=false;
+	
 	public Game() {
 		setTitle("PACMAN");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -22,7 +25,11 @@ public class Game extends JFrame{
 		spiel.pack();
 		spiel.setVisible(true);
 		
-		feld.ausgabe_konsole();
+		while(running) {
+			feld.ausgabe_konsole();
+		}
+		
+	
 		System.out.println("TEST ABGESCHLOSSEN");
 	}
 }
