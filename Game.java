@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Game extends JFrame{
 	
+	public static Spielfeld feld;
 	public static boolean running=true;
 	public static boolean frightened=false;
 	

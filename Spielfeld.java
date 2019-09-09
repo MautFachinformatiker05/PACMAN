@@ -9,7 +9,7 @@ public class Spielfeld extends JPanel{
 	public final int POWER = 3;
 	public final int KIRSCHE = 4;
 	public final int TRENNWAND = 5;
-	
+
 	public byte[][] feld = {		// 0=nix, 1=Wand, 2=Punkt; 3=Power ;4=Kirsche
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1},
@@ -39,22 +39,23 @@ public class Spielfeld extends JPanel{
 			{1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};	// x,y	21,27
-	
-	
+
+
 	public int breite = feld[0].length*20;
 	public int hoehe = feld[1].length*20;
-	
+
 	public int pac_x = 15;
 	public int pac_y = 9;
 	public int pac_leben=5;
-	
-	
+	public int pac_richtung = 0; // l,o,r,u
+
+
 	public Spielfeld() {
-		
-		
+
+
 	}
 
-	
+
 	public void ausgabe_konsole()
 	{
 		for(int y=0;y<feld.length;y++)
@@ -92,18 +93,29 @@ public class Spielfeld extends JPanel{
 			System.out.println("");
 		}
 	}
-	
+
 	public void update()
 	{
 		ausgabe_konsole();
-		// bewegen
+		pac_move();
 	}
-	
+
+	public void pac_move() {
+		int [] vx =  {-1, 0, +1, 0}; 
+		int [] vy =  {0, -1, 0, +1};
+
+
+		//if(pac_x+vx[0]==feld[] && pac_y+vy[0])
+		//	pac_x+=vx[0];
+		//pac_y+=vy[0];
+
+	}
+
 	/*
 	public static void main(String[] args) {
-		
+
 		Spielfeld spiel = new Spielfeld();
 		spiel.ausgabe_konsole();
 	}
-	*/
+	 */
 }
