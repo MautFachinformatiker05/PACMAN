@@ -20,19 +20,19 @@ public class Steuerung extends KeyAdapter {
 		switch (key_id){
 		case KeyEvent.VK_LEFT: 
 			System.out.println("L");
-			Game.feld.pac_richtung = 0;
+			Game.feld.pac_richtung = 1;
 			break; 
 		case KeyEvent.VK_UP: 
-			Game.feld.pac_richtung = 1; 
+			Game.feld.pac_richtung = 2; 
 			System.out.println("U");
 			break; 
 		case KeyEvent.VK_RIGHT: 
-			Game.feld.pac_richtung = 2; 
+			Game.feld.pac_richtung = 3; 
 			System.out.println("R");
 			break; 
 		case KeyEvent.VK_DOWN:
 			System.out.println("D");
-			Game.feld.pac_richtung = 3; 
+			Game.feld.pac_richtung = 0; 
 			break; 
 		}
 

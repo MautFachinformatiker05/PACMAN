@@ -62,6 +62,8 @@ public class Spielfeld extends JPanel{
 		{
 			for(int x=0;x<feld[0].length;x++)
 			{
+				boolean fertig = false;
+				
 				switch (feld[y][x]) {
 				case NICHTS:
 					System.out.print(" ");
@@ -112,7 +114,7 @@ public class Spielfeld extends JPanel{
 		int y = pac_x+vy[pac_richtung];
 
 
-		if(feld[x][y]!=1)
+		if(feld[y][x]!=1)
 		{
 			pac_x+=vx[pac_richtung];
 			pac_y+=vy[pac_richtung];
