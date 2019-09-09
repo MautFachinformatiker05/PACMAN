@@ -11,7 +11,6 @@ public class Steuerung extends KeyAdapter {
 	@Override 
 	public void keyPressed(KeyEvent e){
 
-		System.out.println("IN KEYPRESSED");
 		int key_id = e.getKeyCode(); 
 		int dir; 
 
