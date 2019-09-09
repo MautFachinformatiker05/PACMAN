@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class Spielfeld extends JFrame{
+public class Spielfeld extends JPanel{
 
 	public final int NICHTS = 0;
 	public final int WAND = 1;
