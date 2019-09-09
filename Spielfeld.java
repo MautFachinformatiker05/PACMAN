@@ -55,11 +55,11 @@ public class Spielfeld extends JFrame{
 	
 	public void ausgabe_konsole()
 	{
-		for(int x=0;x<feld.length;x++)
+		for(int y=0;y<feld.length;y++)
 		{
-			for(int y=0;y<feld[0].length;y++)
+			for(int x=0;x<feld[0].length;x++)
 			{
-				switch (feld[x][y]) {
+				switch (feld[y][x]) {
 				case NICHTS:
 					System.out.print(" ");
 					break;
@@ -81,7 +81,7 @@ public class Spielfeld extends JFrame{
 				default:
 					break;
 				}
-				if(pac_x==x && pac_y==y)
+				if(pac_x==y && pac_y==x)
 				{
 					System.out.print("P");
 				}
@@ -94,8 +94,6 @@ public class Spielfeld extends JFrame{
 	public static void main(String[] args) {
 		
 		Spielfeld spiel = new Spielfeld();
-		System.out.println(spiel.feld.length);
-		System.out.println(spiel.feld[0].length);
 		spiel.ausgabe_konsole();
 	}
 }
