@@ -46,6 +46,7 @@ public class Spielfeld extends JPanel{
 	
 	public int pac_x = 15;
 	public int pac_y = 9;
+	public int pac_leben=5;
 	
 	
 	public Spielfeld() {
@@ -90,6 +91,12 @@ public class Spielfeld extends JPanel{
 			}
 			System.out.println("");
 		}
+	}
+	
+	public void update()
+	{
+		ausgabe_konsole();
+		// bewegen
 	}
 	
 	/*

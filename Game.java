@@ -25,8 +25,8 @@ public class Game extends JFrame{
 		spiel.pack();
 		spiel.setVisible(true);
 		
-		while(running) {
-			feld.ausgabe_konsole();
+		while(running && feld.pac_leben!=0) {
+			feld.update();
 		}
 		
 	
