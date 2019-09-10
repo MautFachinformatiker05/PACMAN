@@ -119,6 +119,21 @@ public class Spielfeld extends JPanel{
 	private void pac_touch() {
 		
 		// Geist berührt? 
+		if (pac_x==rot.geistX && pac_y==rot.geistY)
+		{
+			if (Game.frightened==false)
+			{
+				pac_leben--;
+				// Pacman stirbt
+				pac_x = 11;
+				pac_y = 15;
+			}
+			else
+			{
+				score+=100;
+				// Methode -> roter Geist stirbt und respawned später
+			}
+		}
 		// Frightened?
 		if (Game.counter > 0)
 		{
