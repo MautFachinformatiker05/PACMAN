@@ -7,6 +7,7 @@ public class Game extends JFrame{
 	public static Spielfeld feld ;
 	public static boolean running=true;
 	public static boolean frightened=false;
+	public static int counter = 0;
 	
 	public Game() {
 		setTitle("PACMAN");

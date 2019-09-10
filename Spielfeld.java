@@ -107,7 +107,20 @@ public class Spielfeld extends JPanel{
 	{
 		ausgabe_konsole();
 		pac_move();
+		pac_touch();
 	}
+
+	private void pac_touch() {
+		
+		// Geist berührt? 
+		// Frightened?
+		if (Game.counter > 0)
+		{
+			Game.counter--;
+		}
+		
+	}
+
 
 	public void pac_move() {
 		int [] vx =  {-1, 0, +1, 0}; 
@@ -139,7 +152,8 @@ public class Spielfeld extends JPanel{
 			{
 				score+= 50;
 				feld[y][x]=0;
-				// frightened
+				Game.frightened = true;
+				Game.counter = 20;
 			}
 			pac_x+=vx[pac_richtung];
 			pac_y+=vy[pac_richtung];
