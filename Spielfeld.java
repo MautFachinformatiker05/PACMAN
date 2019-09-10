@@ -1,6 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -32,7 +33,7 @@ public class Spielfeld extends JPanel{
 	static final int PAC_START = 		17;
 	static final int PAC_EAT1 = 		18;
 	
-	static Image bild_array[];
+	static Image bild_array[] = new Image[filenames.length];
 	
 	public final int NICHTS = 0;
 	public final int WAND = 1;
@@ -116,7 +117,7 @@ public class Spielfeld extends JPanel{
 
 		for(int i=0;i<filenames.length;i++)
 		{
-			bild_array = new Image[i];
+			bild_array[i] = (new ImageIcon(filenames[i]).getImage());
 		}
 	}
 
@@ -263,10 +264,10 @@ public class Spielfeld extends JPanel{
 	private void spielfeld_zeichnen(Graphics g) {
 		
 		int size = 20;
-		g.drawImage(bild_array[RO_WAND], 0, 0, this);
+		g.drawImage(bild_array[RU_WAND], 0, 0, this);
 		for (int i=1;i<22;i++)
 			g.drawImage(bild_array[H_WAND], i*size, 0, this);
-		g.drawImage(bild_array[LO_WAND], 22*size, 0, this);
+		g.drawImage(bild_array[LU_WAND], 22*size, 0, this);
 		
 	}
 
