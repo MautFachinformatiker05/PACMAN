@@ -49,6 +49,7 @@ public class Spielfeld extends JPanel{
 	public int pac_leben=5;
 	public int pac_richtung = 0; // l,o,r,u
 	public int score = 0;
+	RoterGeist rot = new RoterGeist(11, 11);
 
 
 	public Spielfeld() {
@@ -89,7 +90,11 @@ public class Spielfeld extends JPanel{
 				{
 					System.out.print("P");
 				}
-				if(pac_x==x+1 && pac_y==y) {
+				if(rot.geistX==x && rot.geistY==y)
+				{
+					System.out.print("R");
+				}
+				if((pac_x==x+1 && pac_y==y) || (rot.geistX==x+1 && rot.geistY==y+1 )) {
 					System.out.print("");
 				}
 				else
@@ -107,6 +112,7 @@ public class Spielfeld extends JPanel{
 	{
 		ausgabe_konsole();
 		pac_move();
+		rot.move();
 		pac_touch();
 	}
 
