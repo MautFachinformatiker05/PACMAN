@@ -120,7 +120,7 @@ public class Spielfeld extends JPanel{
 			if(x==0)
 				pac_x = 26;
 			else
-				pac_x = 0;
+				pac_x = 1;
 		}	
 		else if(feld[y][x]!=1 && feld[y][x]!=5) // ArrayOutOfBounds Exception, wenn man durch die Tunnel geht!
 		{
