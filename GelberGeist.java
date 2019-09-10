@@ -5,14 +5,33 @@ public class GelberGeist extends RoterGeist {
 
 	}
 	void move(){
-		int best_score=0;
-		int temp_score=0;
-		int best_sektor=0;
+		
+		int _zielX=Game.feld.pac_x;
+		int _zielY=Game.feld.pac_y;
+		
+		if (abstand(geistX, geistY, _zielX, _zielY)>6){
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	int [] sektorenVerteidiger(){
 		int zielX=0;
 		int zielY=0;
 		
+		int best_score=0;
+		int temp_score=0;
+		int best_sektor=0;
+		
 		final int ylength=27;
 		final int xlength=23;
+		
 		
 		for (int i=0;i <4;i++){
 			temp_score=bewertung(0);
@@ -22,6 +41,7 @@ public class GelberGeist extends RoterGeist {
 			}
 			
 		}
+		int [] koord=new int [2];
 		
 		switch (best_sektor){
 		case 0:
@@ -30,23 +50,22 @@ public class GelberGeist extends RoterGeist {
 			break;
 		case 1:
 			zielY=ylength/4;
-			zielX=xlength/4;
+			zielX=xlength/4*3;
 			break;
 		
-		case 0:
-			zielY=ylength/4;
+		case 2:
+			zielY=ylength/4*3;
 			zielX=xlength/4;
 			break;
-		case 0:
-			zielY=ylength/4;
-			zielX=xlength/4;
+		case 3:
+			zielY=ylength/4*3;
+			zielX=xlength/4*3;
 			break;
 		}
 		
-		
+		return koord;
 		
 	}
-
 	int bewertung(int sektor) {
 		int score = 0;
 		// 0=nix, 1=Wand, 2=Punkt; 3=Power ;4=Kirsche
