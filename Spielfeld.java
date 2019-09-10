@@ -115,10 +115,11 @@ public class Spielfeld extends JPanel{
 
 		int x = pac_x+vx[pac_richtung];
 		int y = pac_y+vy[pac_richtung];
-
-		if(y==13 && (x==0 || x==27)) {
+//		System.out.println(feld.length+"  "+feld[0].length);
+		
+		if(y==13 && (x==0 || x==22)) {
 			if(x==0)
-				pac_x = 26;
+				pac_x = 21;
 			else
 				pac_x = 1;
 		}	
