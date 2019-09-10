@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 
 public class RoterGeist {
 	int geistX;
@@ -70,7 +71,8 @@ public class RoterGeist {
 
 
 	}
-	void draw (){
+	void draw (Graphics g){
+		
 		
 	}
 	double abstand (double _startX,double _startY,double _zielX,double _zielY){
