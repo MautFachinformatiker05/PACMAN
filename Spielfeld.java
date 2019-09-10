@@ -111,8 +111,8 @@ public class Spielfeld extends JPanel{
 	public int pac_leben=5;
 	public int pac_richtung = 0; // l,o,r,u
 	public int score = 0;
-	RoterGeist rot = new RoterGeist(11, 11);
-	BlauerGeist blau = new BlauerGeist(10, 10);
+	RoterGeist rot = new RoterGeist(11, 11,"rot_geist.png");
+	BlauerGeist blau = new BlauerGeist(10, 10,"blau_geist.png");
 
 
 	public Spielfeld() {
