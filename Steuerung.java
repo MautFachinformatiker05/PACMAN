@@ -11,8 +11,7 @@ public class Steuerung extends KeyAdapter {
 	@Override 
 	public void keyPressed(KeyEvent e){
 
-		int key_id = e.getKeyCode(); 
-		int dir; 
+		int key_id = e.getKeyCode();  
 
 		//LEFT, UP, RIGHT, DOWN
 		int [] vx =  {-1, 0, +1, 0}; 
@@ -20,20 +19,20 @@ public class Steuerung extends KeyAdapter {
 
 		switch (key_id){
 		case KeyEvent.VK_LEFT: 
-			System.out.println("L");
-			dir = 0; 
+//			System.out.println("L");
+			Game.feld.pac_richtung = 0;
 			break; 
 		case KeyEvent.VK_UP: 
-			dir = 1; 
-			System.out.println("U");
+			Game.feld.pac_richtung = 1; 
+//			System.out.println("U");
 			break; 
 		case KeyEvent.VK_RIGHT: 
-			dir = 2; 
-			System.out.println("R");
+			Game.feld.pac_richtung = 2; 
+//			System.out.println("R");
 			break; 
 		case KeyEvent.VK_DOWN:
-			System.out.println("D");
-			dir = 3; 
+//			System.out.println("D");
+			Game.feld.pac_richtung = 3; 
 			break; 
 		}
 
