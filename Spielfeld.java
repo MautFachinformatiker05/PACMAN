@@ -244,7 +244,7 @@ public class Spielfeld extends JPanel{
 		
 		rot.draw(g);
 		blau.draw(g);
-		
+		repaint();
 	}
 
 
@@ -281,7 +281,7 @@ public class Spielfeld extends JPanel{
 						rechts = true;
 					if(feld[y+1][x]==1)
 						unten = true;
-					if(feld[y-1][x-1]==1)
+					if(feld[y][x-1]==1)
 						links = true;
 					
 					if(oben==false && rechts==true && unten==false && links==true)
