@@ -139,6 +139,9 @@ public class Spielfeld extends JPanel{
 		{
 			Game.counter--;
 		}
+		else {
+			Game.frightened = false;
+		}
 		
 	}
 
