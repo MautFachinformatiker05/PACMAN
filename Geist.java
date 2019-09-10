@@ -38,4 +38,29 @@ public abstract class Geist {
 
 		return false;
 	}
+	
+	void checkFrightened(){
+		if ( Game.frightened){
+			int zufall= (int)(Math.random()*4+1);
+			switch (zufall){
+			case 1:
+				zielX=0;
+				zielY=0;
+				break;
+			case 2:
+				zielX=23;
+				zielY=0;
+				break;
+			case 3:
+				zielX=0;
+				zielY=26;
+				break;
+			case 4:
+				zielX=23;
+				zielY=26;
+				break;
+			}
+			
+		}
+	}
 }

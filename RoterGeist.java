@@ -8,7 +8,7 @@ public class RoterGeist extends Geist {
 	void move() {
 		zielX = Game.feld.pac_x;
 		zielY = Game.feld.pac_y;
-
+		checkFrightened();
 		int vxAchse = 0;
 		int vyAchse = 0;
 		int xTemp = 0;
