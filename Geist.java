@@ -21,7 +21,7 @@ public abstract class Geist {
 
 	void draw(Graphics g) {
 		int size = 20;
-		g.drawImage(bild, geistX * size, geistY * size, Game.feld);
+		g.drawImage(bild, (geistX-1) * size, geistY * size, Game.feld);
 
 	}
 
