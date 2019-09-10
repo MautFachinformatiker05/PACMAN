@@ -91,6 +91,7 @@ public class Spielfeld extends JPanel{
 	public int score = 0;
 	RoterGeist rot = new RoterGeist(11, 11,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(10, 10,"blau_geist.png");
+	GelberGeist gelb = new GelberGeist(9, 11, "gelb_geist.png");
 
 
 	public Spielfeld() {
@@ -159,10 +160,11 @@ public class Spielfeld extends JPanel{
 
 	public void update()
 	{
-		ausgabe_konsole();
+//		ausgabe_konsole();
 		pac_move();
 		rot.move();
 		blau.move();
+		gelb.move();
 		pac_touch();
 		repaint();
 	}
@@ -170,7 +172,7 @@ public class Spielfeld extends JPanel{
 	private void pac_touch() {
 		
 		// Geist berührt? 
-		if (pac_x==rot.geistX && pac_y==rot.geistY || pac_x==blau.geistX && pac_y==blau.geistY )
+		if (pac_x==rot.geistX && pac_y==rot.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY)
 		{
 			if (Game.frightened==false)
 			{
@@ -245,6 +247,7 @@ public class Spielfeld extends JPanel{
 		
 		rot.draw(g);
 		blau.draw(g);
+		gelb.draw(g);
 		repaint();
 	}
 
