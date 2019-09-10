@@ -15,6 +15,7 @@ public class Game extends JFrame{
 		this.getContentPane().setPreferredSize(new Dimension(600,600));
 		this.pack();
 		setLocationRelativeTo(null);
+		setResizable(false);
 	}
 
 	public static void main(String[] args) {
