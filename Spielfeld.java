@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -319,6 +320,11 @@ public class Spielfeld extends JPanel{
 				}
 			}
 		}
+		Font f = new Font("Calibri", Font.PLAIN, 10);
+		g.setFont(f);
+		g.setColor(Color.decode("#DDDDDD"));
+		g.drawString("Score "+score,0,0);
+		
 		if (komplett==true)
 			feld = backup;
 	}
