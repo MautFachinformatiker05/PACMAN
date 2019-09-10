@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -102,8 +103,8 @@ public class Spielfeld extends JPanel{
 
 	
 	
-	public int breite = feld[0].length*20;
-	public int hoehe = feld[1].length*20;
+	public int breite = (feld[0].length-2)*20;
+	public int hoehe = feld.length*20;
 
 	public int pac_x = 11;
 	public int pac_y = 15;
@@ -116,6 +117,7 @@ public class Spielfeld extends JPanel{
 
 	public Spielfeld() {
 
+		this.setBackground(Color.decode("#111111"));
 		for(int i=0;i<filenames.length;i++)
 		{
 			bild_array[i] = (new ImageIcon(filenames[i]).getImage());
@@ -261,9 +263,18 @@ public class Spielfeld extends JPanel{
 		
 		super.paintComponent(g);
 		spielfeld_zeichnen(g);
+		pacman_zeichnen(g);
 		
 		rot.draw(g);
+		blau.draw(g);
 		
+	}
+
+
+	private void pacman_zeichnen(Graphics g) {
+		
+		int size = 20;
+		g.drawImage(bild_array[PAC_START], (pac_x-1)*size, pac_y*size, this);
 	}
 
 
@@ -271,10 +282,101 @@ public class Spielfeld extends JPanel{
 		
 		int size = 20;
 		g.drawImage(bild_array[RU_WAND], 0, 0, this);
-		for (int i=1;i<22;i++)
-			g.drawImage(bild_array[H_WAND], i*size, 0, this);
-		g.drawImage(bild_array[LU_WAND], 22*size, 0, this);
+		for (int i=1;i<20;i++)
+		{
+			if(i!=10)
+				g.drawImage(bild_array[H_WAND], i*size, 0, this);
+		}
+		g.drawImage(bild_array[RUL_WAND], 10*size, 0, this);
+		g.drawImage(bild_array[V_WAND], 10*size, 1*size, this);
+		g.drawImage(bild_array[V_WAND], 10*size, 2*size, this);
+		g.drawImage(bild_array[V_WAND], 10*size, 3*size, this);
+		g.drawImage(bild_array[O_WAND], 10*size, 4*size, this);
+		g.drawImage(bild_array[LU_WAND], 20*size, 0, this);
+		for (int i=1;i<9;i++)
+		{
+			g.drawImage(bild_array[V_WAND], 0, i*size, this);
+			g.drawImage(bild_array[V_WAND], 20*size, i*size, this);
+		}
+		quadrat_zeichnen(2,2,size,g);
+		quadrat_zeichnen(6,2,size,g);
+		quadrat_zeichnen(12,2,size,g);
+		quadrat_zeichnen(16,2,size,g);
+		quader_zeichnen(2,6,size,g);
+		quader_zeichnen(16,6,size,g);
+		g.drawImage(bild_array[RO_WAND], 0*size, 9*size, this);
+		g.drawImage(bild_array[LO_WAND], 20*size, 9*size, this);
+		for(int i=1;i<4;i++)
+		{
+			g.drawImage(bild_array[H_WAND], i*size, 9*size, this);
+			g.drawImage(bild_array[H_WAND], (i+16)*size, 9*size, this);
+		}
+		g.drawImage(bild_array[LU_WAND], 4*size, 9*size, this);
+		g.drawImage(bild_array[RU_WAND], 16*size, 9*size, this);
+		for(int i=10;i<12;i++)
+		{
+			g.drawImage(bild_array[V_WAND], 4*size, i*size, this);
+			g.drawImage(bild_array[V_WAND], 6*size, i*size, this);
+			g.drawImage(bild_array[V_WAND], 14*size, i*size, this);
+			g.drawImage(bild_array[V_WAND], 16*size, i*size, this);
+		}	
+		g.drawImage(bild_array[LO_WAND], 4*size, 12*size, this);
+		g.drawImage(bild_array[RO_WAND], 16*size, 12*size, this);
+		for(int i=0;i<4;i++)
+		{
+			g.drawImage(bild_array[H_WAND], i*size, 12*size, this);
+			g.drawImage(bild_array[H_WAND], (i+17)*size, 12*size, this);
+		}
+		g.drawImage(bild_array[U_WAND], 6*size, 6*size, this);
+		g.drawImage(bild_array[V_WAND], 6*size, 7*size, this);
+		g.drawImage(bild_array[V_WAND], 6*size, 8*size, this);
+		g.drawImage(bild_array[U_WAND], 14*size, 6*size, this);
+		g.drawImage(bild_array[V_WAND], 14*size, 7*size, this);
+		g.drawImage(bild_array[V_WAND], 14*size, 8*size, this);
+		g.drawImage(bild_array[ORU_WAND], 6*size, 9*size, this);
+		g.drawImage(bild_array[OUL_WAND], 14*size, 9*size, this);
+		g.drawImage(bild_array[H_WAND], 7*size, 9*size, this);
+		g.drawImage(bild_array[H_WAND], 13*size, 9*size, this);
+		g.drawImage(bild_array[L_WAND], 8*size, 9*size, this);
+		g.drawImage(bild_array[R_WAND], 12*size, 9*size, this);
+		for(int i=9;i<12;i+=2)
+		{
+			g.drawImage(bild_array[H_WAND], i*size, 6*size, this);
+			g.drawImage(bild_array[H_WAND], i*size, 7*size, this);
+		}
+		g.drawImage(bild_array[H_WAND], 10*size, 6*size, this);
+		g.drawImage(bild_array[RUL_WAND], 10*size, 7*size, this);
+		g.drawImage(bild_array[O_WAND], 10*size, 8*size, this);
+		g.drawImage(bild_array[RO_WAND], 8*size, 7*size, this);
+		g.drawImage(bild_array[RU_WAND], 8*size, 6*size, this);
+		g.drawImage(bild_array[LO_WAND], 12*size, 7*size, this);
+		g.drawImage(bild_array[LU_WAND], 12*size, 6*size, this);
+		g.drawImage(bild_array[O_WAND], 6*size, 12*size, this);
+		g.drawImage(bild_array[O_WAND], 14*size, 12*size, this);
+	}
+
+
+	private void quader_zeichnen(int x, int y, int size, Graphics g) {
 		
+		g.drawImage(bild_array[RU_WAND], (x)*size, (y)*size, this);
+		g.drawImage(bild_array[RO_WAND], (x)*size, (y+1)*size, this);
+		g.drawImage(bild_array[H_WAND], (x+1)*size, (y)*size, this);
+		g.drawImage(bild_array[H_WAND], (x+1)*size, (y+1)*size, this);
+		g.drawImage(bild_array[LU_WAND], (x+2)*size, (y)*size, this);
+		g.drawImage(bild_array[LO_WAND], (x+2)*size, (y+1)*size, this);
+	}
+
+
+	private void quadrat_zeichnen(int x, int y, int size,Graphics g) {
+		
+		g.drawImage(bild_array[RU_WAND], (x)*size, (y)*size, this);
+		g.drawImage(bild_array[V_WAND], (x)*size, (y+1)*size, this);
+		g.drawImage(bild_array[RO_WAND], (x)*size, (y+2)*size, this);
+		g.drawImage(bild_array[H_WAND], (x+1)*size, (y)*size, this);
+		g.drawImage(bild_array[H_WAND], (x+1)*size, (y+2)*size, this);
+		g.drawImage(bild_array[LU_WAND], (x+2)*size, (y)*size, this);
+		g.drawImage(bild_array[V_WAND], (x+2)*size, (y+1)*size, this);
+		g.drawImage(bild_array[LO_WAND], (x+2)*size, (y+2)*size, this);
 	}
 
 	/*
