@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -320,10 +321,18 @@ public class Spielfeld extends JPanel{
 				}
 			}
 		}
-//		Font f = new Font("Calibri", Font.PLAIN, 10);
-//		g.setFont(f);
+		Font f = new Font("Calibri", Font.BOLD, 26);
+		g.setFont(f);
+		FontMetrics metrics = getFontMetrics(f);
 		g.setColor(Color.decode("#DDDDDD"));
-		g.drawString("Score "+score,0,0);
+		g.drawString("SCORE", 5, 20);
+		g.drawString(""+score, 217-metrics.stringWidth(""+score), 20);
+		g.drawString("SCORE",345, 20);
+		
+		for(int i=0;i<pac_leben;i++)
+		{
+			g.drawImage(bild_array[PAC_EAT1], (int)((6.5+i*1.5)*size), 28*size, this);
+		}
 		
 		if (komplett==true)
 			feld = backup;
