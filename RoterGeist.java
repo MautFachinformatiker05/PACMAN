@@ -61,7 +61,7 @@ public class RoterGeist {
 			geistY=yWhile;
 		}
 		
-//		System.out.println("Der Abstand zu Pacman ist " + abstand(geistX, geistY, zielX, zielY));
+		System.out.println("Der Abstand zu Pacman ist " + abstand(geistX, geistY, zielX, zielY));
 //		if (abstand(geistX, geistY, zielX, zielY)==0){
 //			System.exit(0);
 //		}
