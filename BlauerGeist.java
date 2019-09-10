@@ -1,8 +1,14 @@
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class BlauerGeist extends RoterGeist{
 
+	Image bild;
+	
 	public BlauerGeist(int _startX, int _startY) {
 		super(_startX, _startY);
+		bild = (new ImageIcon("blau_geist.png").getImage());
 		
 	}
 	

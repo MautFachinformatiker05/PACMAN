@@ -1,11 +1,18 @@
 import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class RoterGeist {
 	int geistX;
 	int geistY;
+	Image bild;
+	
 	public RoterGeist(int _startX,int _startY){
 		this.geistX=_startX;
 		this.geistY=_startY;
+		
+		bild = (new ImageIcon("rot_geist.png").getImage());
 
 	}
 	void move(){
@@ -72,7 +79,8 @@ public class RoterGeist {
 
 	}
 	void draw (Graphics g){
-		
+		int size = 20;
+		g.drawImage(bild, geistX*size, geistY*size, Game.feld);
 		
 	}
 	double abstand (double _startX,double _startY,double _zielX,double _zielY){
