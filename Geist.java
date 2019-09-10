@@ -6,6 +6,7 @@ public abstract class Geist {
 	int geistX;
 	int geistY;
 	Image bild;
+	Image bild2;
 	int zielY;
 	int zielX;
 
@@ -13,6 +14,7 @@ public abstract class Geist {
 		this.geistX = _startX;
 		this.geistY = _startY;
 		bild = (new ImageIcon(bildText).getImage());
+		bild2 = (new ImageIcon("pupille.png").getImage());
 	
 
 	}
@@ -22,7 +24,16 @@ public abstract class Geist {
 	void draw(Graphics g) {
 		int size = 20;
 		g.drawImage(bild, (geistX-1) * size, geistY * size, Game.feld);
-
+		if (Game.frightened==false)
+		{
+			g.drawImage(bild2, ((geistX-1) * size)+6, (geistY * size)+6, Game.feld);
+			g.drawImage(bild2, ((geistX-1) * size)+12, (geistY * size)+6, Game.feld);
+		}
+		else
+		{
+			g.drawImage(bild2, ((geistX-1) * size)+5+(int)(Math.random()*4), (geistY * size)+5+(int)(Math.random()*4), Game.feld);
+			g.drawImage(bild2, ((geistX-1) * size)+11+(int)(Math.random()*4), (geistY * size)+5+(int)(Math.random()*4), Game.feld);
+		}
 	}
 
 	double abstand(double _startX, double _startY, double _zielX, double _zielY) {
