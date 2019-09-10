@@ -204,7 +204,7 @@ public class Spielfeld extends JPanel{
 		int y = pac_y+vy[pac_richtung];
 //		System.out.println(feld.length+"  "+feld[0].length);
 		
-		if(y==13 && (x==0 || x==22)) {
+		if((x==0 || x==22)) {
 			if(x==0)
 				pac_x = 21;
 			else
@@ -320,8 +320,8 @@ public class Spielfeld extends JPanel{
 				}
 			}
 		}
-		Font f = new Font("Calibri", Font.PLAIN, 10);
-		g.setFont(f);
+//		Font f = new Font("Calibri", Font.PLAIN, 10);
+//		g.setFont(f);
 		g.setColor(Color.decode("#DDDDDD"));
 		g.drawString("Score "+score,0,0);
 		
