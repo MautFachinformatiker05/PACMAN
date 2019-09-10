@@ -35,12 +35,12 @@ public class RoterGeist {
 		else{
 			geistX+=vxAchse;
 		}
-		System.out.println("gerader weg");
+//		System.out.println("gerader weg");
 
-		System.out.println("Feld das der geist wählen möchte " +Game.feld.feld[geistY][geistX]);
+//		System.out.println("Feld das der geist wählen möchte " +Game.feld.feld[geistY][geistX]);
 		// Wenn kein gerader Weg zum Ziel gefunden, ausprobieren
 		while (Game.feld.feld[geistY][geistX]==1){
-				System.out.println("Raten \n \n \n");
+//				System.out.println("Raten \n \n \n");
 			zufall=(int)(Math.random()*4+1);
 			xWhile=xTemp;
 			yWhile=yTemp;
@@ -61,10 +61,10 @@ public class RoterGeist {
 			geistY=yWhile;
 		}
 		
-		System.out.println("Der Abstand zu Pacman ist " + abstand(geistX, geistY, zielX, zielY));
-		if (abstand(geistX, geistY, zielX, zielY)==0){
-			System.exit(0);
-		}
+//		System.out.println("Der Abstand zu Pacman ist " + abstand(geistX, geistY, zielX, zielY));
+//		if (abstand(geistX, geistY, zielX, zielY)==0){
+//			System.exit(0);
+//		}
 //		Game.feld.feld[2][1]='4';
 		
 
