@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.JPanel;
 
@@ -7,7 +8,31 @@ public class Spielfeld extends JPanel{
 
 	static final String[] filenames = {"h_wand.png","v_wand.png",
 										"o_wand.png","r_wand.png","u_wand.png","l_wand.png",
-										"ro_wand.png","ru_wand.png","lo_wand.png","lu_wand.png"}; 
+										"ro_wand.png","ru_wand.png","lo_wand.png","lu_wand.png",
+										"oru_wand.png","rul_wand.png","oul_wand.png","olr_wand.png",
+										"trennwand.png",
+										"punkt.png","power.png","pac_start.png","pac_eat1.png"}; 
+	static final int H_WAND = 			0;
+	static final int V_WAND = 			1;
+	static final int O_WAND = 			2;
+	static final int R_WAND = 			3;
+	static final int U_WAND = 			4;
+	static final int L_WAND = 			5;
+	static final int RO_WAND = 			6;
+	static final int RU_WAND = 			7;
+	static final int LO_WAND = 			8;
+	static final int LU_WAND = 			9;
+	static final int ORU_WAND = 		10;
+	static final int RUL_WAND = 		11;
+	static final int OUL_WAND = 		12;
+	static final int OLR_WAND = 		13;
+	static final int TRENNWAND_BILD = 	14;
+	static final int PUNKT_BILD = 		15;
+	static final int POWER_BILD = 		16;
+	static final int PAC_START = 		17;
+	static final int PAC_EAT1 = 		18;
+	
+	static Image bild_array[];
 	
 	public final int NICHTS = 0;
 	public final int WAND = 1;
@@ -89,7 +114,10 @@ public class Spielfeld extends JPanel{
 
 	public Spielfeld() {
 
-
+		for(int i=0;i<filenames.length;i++)
+		{
+			bild_array = new Image[i];
+		}
 	}
 
 
@@ -234,7 +262,11 @@ public class Spielfeld extends JPanel{
 
 	private void spielfeld_zeichnen(Graphics g) {
 		
-		//g.drawImage(img, x, y, observer);
+		int size = 20;
+		g.drawImage(bild_array[RO_WAND], 0, 0, this);
+		for (int i=1;i<22;i++)
+			g.drawImage(bild_array[H_WAND], i*size, 0, this);
+		g.drawImage(bild_array[LO_WAND], 22*size, 0, this);
 		
 	}
 
