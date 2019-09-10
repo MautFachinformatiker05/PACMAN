@@ -15,7 +15,7 @@ public class GelberGeist extends RoterGeist {
 			_zielY=zielYX[0];
 			_zielX=zielYX[1];
 		}
-		
+		else {
 		
 		int xBewegung=-1;
 		int yBewegung=0;
@@ -49,13 +49,11 @@ public class GelberGeist extends RoterGeist {
 			xBewegung=0;
 			yBewegung=-1;
 		}
-		
-		System.out.println("Der Abstand ist " + distance);
-		System.out.println("X : " +xBewegung);
-		System.out.println("Y : " +yBewegung);
-		
+
 		geistX +=xBewegung;
 		geistY+=yBewegung;
+		}
+		
 		
 		
 		
