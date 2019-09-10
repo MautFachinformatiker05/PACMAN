@@ -94,7 +94,7 @@ public class Spielfeld extends JPanel{
 				{
 					System.out.print("R");
 				}
-				if((pac_x==x+1 && pac_y==y) || (rot.geistX==x+1 && rot.geistY==y+1 )) {
+				if((pac_x==x+1 && pac_y==y) || (rot.geistX==x+1 && rot.geistY==y )) {
 					System.out.print("");
 				}
 				else
@@ -160,7 +160,7 @@ public class Spielfeld extends JPanel{
 			else
 				pac_x = 1;
 		}	
-		else if(feld[y][x]!=1 && feld[y][x]!=5) // ArrayOutOfBounds Exception, wenn man durch die Tunnel geht!
+		else if(feld[y][x]!=1 && feld[y][x]!=5) 
 		{
 			if(feld[y][x]==2)
 			{
