@@ -44,6 +44,7 @@ public class Spielfeld extends JPanel{
 	public final int TRENNWAND = 5;
 
 	public byte[][] feld = {		// 0=nix, 1=Wand, 2=Punkt; 3=Power ;4=Kirsche
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
 			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
@@ -56,9 +57,9 @@ public class Spielfeld extends JPanel{
 			{0,1,1,1,1,1,2,1,1,1,2,2,2,1,1,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
-			{1,1,1,1,1,1,2,1,0,0,0,0,0,0,0,1,2,1,1,1,1,1,1},
+			{0,1,1,1,1,1,2,1,0,0,0,0,0,0,0,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0},
-			{1,1,1,1,1,1,2,1,0,0,0,0,0,0,0,1,2,1,1,1,1,1,1},
+			{0,1,1,1,1,1,2,1,0,0,0,0,0,0,0,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
 			{0,0,0,0,0,1,2,1,0,1,1,1,1,1,0,1,2,1,0,0,0,0,0},
 			{0,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1,1,0},
@@ -70,9 +71,11 @@ public class Spielfeld extends JPanel{
 			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1,0},
 			{0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0},
-			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0}
+			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			
-		/*	{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+		/*	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		 	{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
 			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
 			{0,1,3,1,0,1,2,1,0,1,2,1,2,1,0,1,2,1,0,1,3,1,0},
@@ -84,9 +87,9 @@ public class Spielfeld extends JPanel{
 			{0,1,1,1,1,1,2,1,1,1,2,2,2,1,1,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
 			{0,0,0,0,0,1,2,1,0,1,1,5,1,1,0,1,2,1,0,0,0,0,0},
-			{1,1,1,1,1,1,2,1,0,1,0,0,0,1,0,1,2,1,1,1,1,1,1},
+			{0,1,1,1,1,1,2,1,0,1,0,0,0,1,0,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,0,2,0,0,1,0,0,0,1,0,0,2,0,0,0,0,0,0},
-			{1,1,1,1,1,1,2,1,0,1,1,1,1,1,0,1,2,1,1,1,1,1,1},
+			{0,1,1,1,1,1,2,1,0,1,1,1,1,1,0,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
 			{0,0,0,0,0,1,2,1,0,1,1,1,1,1,0,1,2,1,0,0,0,0,0},
 			{0,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1,1,0},
@@ -98,7 +101,8 @@ public class Spielfeld extends JPanel{
 			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1,0},
 			{0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0},
-			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0} */
+			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} */
 	};	// x,y	21,27
 
 	
@@ -274,116 +278,69 @@ public class Spielfeld extends JPanel{
 	private void pacman_zeichnen(Graphics g) {
 		
 		int size = 20;
-		g.drawImage(bild_array[PAC_START], (pac_x-1)*size, pac_y*size, this);
+		g.drawImage(bild_array[PAC_START], (pac_x)*size, pac_y*size, this);
 	}
 
 
-	private void spielfeld_zeichnen(Graphics g) {
+	private void spielfeld_zeichnen(Graphics g) {			// für zeichnen immer x2 benutzen!!! wehe nicht
 		
 		int size = 20;
-		g.drawImage(bild_array[RU_WAND], 0, 0, this);
-		for (int i=1;i<20;i++)
-		{
-			if(i!=10)
-				g.drawImage(bild_array[H_WAND], i*size, 0, this);
-		}
-		g.drawImage(bild_array[RUL_WAND], 10*size, 0, this);
-		g.drawImage(bild_array[V_WAND], 10*size, 1*size, this);
-		g.drawImage(bild_array[V_WAND], 10*size, 2*size, this);
-		g.drawImage(bild_array[V_WAND], 10*size, 3*size, this);
-		g.drawImage(bild_array[O_WAND], 10*size, 4*size, this);
-		g.drawImage(bild_array[LU_WAND], 20*size, 0, this);
-		for (int i=1;i<9;i++)
-		{
-			g.drawImage(bild_array[V_WAND], 0, i*size, this);
-			g.drawImage(bild_array[V_WAND], 20*size, i*size, this);
-		}
-		quadrat_zeichnen(2,2,size,g);
-		quadrat_zeichnen(6,2,size,g);
-		quadrat_zeichnen(12,2,size,g);
-		quadrat_zeichnen(16,2,size,g);
-		quader_zeichnen(2,6,size,g);
-		quader_zeichnen(16,6,size,g);
-		g.drawImage(bild_array[RO_WAND], 0*size, 9*size, this);
-		g.drawImage(bild_array[LO_WAND], 20*size, 9*size, this);
-		for(int i=1;i<4;i++)
-		{
-			g.drawImage(bild_array[H_WAND], i*size, 9*size, this);
-			g.drawImage(bild_array[H_WAND], (i+16)*size, 9*size, this);
-		}
-		g.drawImage(bild_array[LU_WAND], 4*size, 9*size, this);
-		g.drawImage(bild_array[RU_WAND], 16*size, 9*size, this);
-		for(int i=10;i<12;i++)
-		{
-			g.drawImage(bild_array[V_WAND], 4*size, i*size, this);
-			g.drawImage(bild_array[V_WAND], 6*size, i*size, this);
-			g.drawImage(bild_array[V_WAND], 14*size, i*size, this);
-			g.drawImage(bild_array[V_WAND], 16*size, i*size, this);
-		}	
-		g.drawImage(bild_array[LO_WAND], 4*size, 12*size, this);
-		g.drawImage(bild_array[RO_WAND], 16*size, 12*size, this);
-		for(int i=0;i<4;i++)
-		{
-			g.drawImage(bild_array[H_WAND], i*size, 12*size, this);
-			g.drawImage(bild_array[H_WAND], (i+17)*size, 12*size, this);
-		}
-		g.drawImage(bild_array[U_WAND], 6*size, 6*size, this);
-		g.drawImage(bild_array[V_WAND], 6*size, 7*size, this);
-		g.drawImage(bild_array[V_WAND], 6*size, 8*size, this);
-		g.drawImage(bild_array[U_WAND], 14*size, 6*size, this);
-		g.drawImage(bild_array[V_WAND], 14*size, 7*size, this);
-		g.drawImage(bild_array[V_WAND], 14*size, 8*size, this);
-		g.drawImage(bild_array[ORU_WAND], 6*size, 9*size, this);
-		g.drawImage(bild_array[OUL_WAND], 14*size, 9*size, this);
-		g.drawImage(bild_array[H_WAND], 7*size, 9*size, this);
-		g.drawImage(bild_array[H_WAND], 13*size, 9*size, this);
-		g.drawImage(bild_array[L_WAND], 8*size, 9*size, this);
-		g.drawImage(bild_array[R_WAND], 12*size, 9*size, this);
-		for(int i=9;i<12;i+=2)
-		{
-			g.drawImage(bild_array[H_WAND], i*size, 6*size, this);
-			g.drawImage(bild_array[H_WAND], i*size, 7*size, this);
-		}
-		g.drawImage(bild_array[H_WAND], 10*size, 6*size, this);
-		g.drawImage(bild_array[RUL_WAND], 10*size, 7*size, this);
-		g.drawImage(bild_array[O_WAND], 10*size, 8*size, this);
-		g.drawImage(bild_array[RO_WAND], 8*size, 7*size, this);
-		g.drawImage(bild_array[RU_WAND], 8*size, 6*size, this);
-		g.drawImage(bild_array[LO_WAND], 12*size, 7*size, this);
-		g.drawImage(bild_array[LU_WAND], 12*size, 6*size, this);
-		g.drawImage(bild_array[O_WAND], 6*size, 12*size, this);
-		g.drawImage(bild_array[O_WAND], 14*size, 12*size, this);
-	}
-
-
-	private void quader_zeichnen(int x, int y, int size, Graphics g) {
 		
-		g.drawImage(bild_array[RU_WAND], (x)*size, (y)*size, this);
-		g.drawImage(bild_array[RO_WAND], (x)*size, (y+1)*size, this);
-		g.drawImage(bild_array[H_WAND], (x+1)*size, (y)*size, this);
-		g.drawImage(bild_array[H_WAND], (x+1)*size, (y+1)*size, this);
-		g.drawImage(bild_array[LU_WAND], (x+2)*size, (y)*size, this);
-		g.drawImage(bild_array[LO_WAND], (x+2)*size, (y+1)*size, this);
+		for(int y=0;y<28;y++)
+		{
+			for(int x=0;x<22;x++)
+			{
+				int x2 = x-1;
+				if(feld[y][x]==2)
+					g.drawImage(bild_array[PUNKT_BILD], (x2)*size, y*size, this);
+				if(feld[y][x]==3)
+					g.drawImage(bild_array[POWER_BILD], (x2)*size, y*size, this);
+				if(feld[y][x]==1)
+				{
+					boolean oben,rechts,links,unten;
+					oben = rechts = links = unten = false;
+					if(feld[y-1][x]==1)
+						oben = true;
+					if(feld[y][x+1]==1)
+						rechts = true;
+					if(feld[y+1][x]==1)
+						unten = true;
+					if(feld[y-1][x-1]==1)
+						links = true;
+					
+					if(oben==false && rechts==true && unten==false && links==true)
+						g.drawImage(bild_array[H_WAND], x2*size, y*size, this);
+					if(oben==true && rechts==false && unten==true && links==false)
+						g.drawImage(bild_array[V_WAND], x2*size, y*size, this);
+					
+					if(oben==true && rechts==false && unten==false && links==false)
+						g.drawImage(bild_array[O_WAND], x2*size, y*size, this);
+					if(oben==false && rechts==true && unten==false && links==false)
+						g.drawImage(bild_array[R_WAND], x2*size, y*size, this);
+					if(oben==false && rechts==false && unten==true && links==false)
+						g.drawImage(bild_array[U_WAND], x2*size, y*size, this);
+					if(oben==false && rechts==false && unten==false && links==true)
+						g.drawImage(bild_array[L_WAND], x2*size, y*size, this);
+					
+					if(oben==true && rechts==true && unten==false && links==false)
+						g.drawImage(bild_array[RO_WAND], x2*size, y*size, this);
+					if(oben==false && rechts==true && unten==true && links==false)
+						g.drawImage(bild_array[RU_WAND], x2*size, y*size, this);
+					if(oben==false && rechts==false && unten==true && links==true)
+						g.drawImage(bild_array[LU_WAND], x2*size, y*size, this);
+					if(oben==true && rechts==false && unten==false && links==true)
+						g.drawImage(bild_array[LO_WAND], x2*size, y*size, this);
+					
+					if(oben==true && rechts==true && unten==true && links==false)
+						g.drawImage(bild_array[ORU_WAND], x2*size, y*size, this);
+					if(oben==false && rechts==true && unten==true && links==true)
+						g.drawImage(bild_array[RUL_WAND], x2*size, y*size, this);
+					if(oben==true && rechts==false && unten==true && links==true)
+						g.drawImage(bild_array[OUL_WAND], x2*size, y*size, this);
+					if(oben==true && rechts==true && unten==false && links==true)
+						g.drawImage(bild_array[OLR_WAND], x2*size, y*size, this);
+				}
+			}
+		}
 	}
-
-
-	private void quadrat_zeichnen(int x, int y, int size,Graphics g) {
-		
-		g.drawImage(bild_array[RU_WAND], (x)*size, (y)*size, this);
-		g.drawImage(bild_array[V_WAND], (x)*size, (y+1)*size, this);
-		g.drawImage(bild_array[RO_WAND], (x)*size, (y+2)*size, this);
-		g.drawImage(bild_array[H_WAND], (x+1)*size, (y)*size, this);
-		g.drawImage(bild_array[H_WAND], (x+1)*size, (y+2)*size, this);
-		g.drawImage(bild_array[LU_WAND], (x+2)*size, (y)*size, this);
-		g.drawImage(bild_array[V_WAND], (x+2)*size, (y+1)*size, this);
-		g.drawImage(bild_array[LO_WAND], (x+2)*size, (y+2)*size, this);
-	}
-
-	/*
-	public static void main(String[] args) {
-
-		Spielfeld spiel = new Spielfeld();
-		spiel.ausgabe_konsole();
-	}
-	 */
 }

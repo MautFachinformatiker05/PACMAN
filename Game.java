@@ -35,6 +35,7 @@ public class Game extends JFrame{
 				e.printStackTrace();
 			}
 			feld.update();
+			spiel.setTitle("PACMAN     Score: "+feld.score);
 		}
 		
 	
