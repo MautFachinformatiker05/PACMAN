@@ -49,7 +49,7 @@ public class GelberGeist extends Geist {
 		
 		
 		while (Game.feld.feld[geistY][geistX]==1){
-//			System.out.println("Raten \n \n \n");
+
 		zufall=(int)(Math.random()*4+1);
 		xWhile=xTemp;
 		yWhile=yTemp;
@@ -68,8 +68,8 @@ public class GelberGeist extends Geist {
 		}
 		geistX=xWhile;
 		geistY=yWhile;
-		System.out.println("Ziel X "+zielX);
-		System.out.println("Ziel Y "+zielY);
+		
+		
 	}
 		
 		
