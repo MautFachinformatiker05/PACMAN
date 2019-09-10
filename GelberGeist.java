@@ -5,56 +5,69 @@ public class GelberGeist extends RoterGeist {
 
 	}
 	void move(){
-		
+		int vxAchse=0;
+		int vyAchse=0;
+		int xTemp=0;
+		int yTemp=0;
+		int xWhile=0;
+		int yWhile=0;
+		int zufall=0;
 		int [] zielYX;
-		int _zielX=Game.feld.pac_x;
-		int _zielY=Game.feld.pac_y;
+		xTemp=geistX;
+		yTemp=geistY;
+		int zielX=Game.feld.pac_x;
+		int zielY=Game.feld.pac_y;
 		
-		if (abstand(geistX, geistY, _zielX, _zielY)>6){
+		if (abstand(geistX, geistY, zielX, zielY)>5){
 			zielYX=sektorenVerteidiger();
-			_zielY=zielYX[0];
-			_zielX=zielYX[1];
+			zielY=zielYX[0];
+			zielX=zielYX[1];
+			System.out.println("Gelber Geist");
+			System.out.println("Der Abstand ist "+ abstand(geistX, geistY, zielX, zielY));
+			System.out.println("Verteidige Sektor");
+			System.out.println("Ziel X "+zielX);
+			System.out.println("Ziel Y "+zielY);
+		}
+		
+		
+		xTemp=geistX;
+		yTemp=geistY;
+		
+		
+		vyAchse=Integer.signum(zielY-geistY);
+		vxAchse=Integer.signum(zielX-geistX);
+		// Gerader Weg
+		if (vyAchse!=0){
+			geistY+=vyAchse;
+		}
+		else{
+			geistX+=vxAchse;
+		}
+		
+		
+		while (Game.feld.feld[geistY][geistX]==1){
+//			System.out.println("Raten \n \n \n");
+		zufall=(int)(Math.random()*4+1);
+		xWhile=xTemp;
+		yWhile=yTemp;
+
+		if(zufall==1){
+			xWhile--;
+		}
+		else if (zufall==2){
+			xWhile++;
+		}
+		else if (zufall==3){
+			yWhile--;
 		}
 		else {
-		
-		int xBewegung=-1;
-		int yBewegung=0;
-		
-		// 1. Fall X-Kor -1
-		double distance = abstand(geistX-1, geistY, _zielX, _zielY);
-		if (isWall(geistY, geistX-1)){
-			xBewegung=0;
+			yWhile++;
 		}
-		
-		// 2. Fall X-Kor +1
-		double tempDistance=abstand(geistX+1, geistY, _zielX, _zielY);
-		
-		if (tempDistance<distance && !isWall(geistY, geistX+1)){
-			distance=tempDistance;
-			xBewegung=1;
-		}
-		
-		// 3. Fall Y-Kor +1
-		tempDistance=abstand(geistX, geistY+1, _zielX, _zielY);
-		if (tempDistance<distance && !isWall(geistY+1, geistX)){
-			distance=tempDistance;
-			xBewegung=0;
-			yBewegung=1;
-		}
-		
-		// 4. Fall X-Kor -1
-		tempDistance=abstand(geistX, geistY-1, _zielX, _zielY);
-		if (tempDistance<distance && !isWall(geistY-1, geistX)){
-			distance=tempDistance;
-			xBewegung=0;
-			yBewegung=-1;
-		}
-
-		geistX +=xBewegung;
-		geistY+=yBewegung;
-		}
-		
-		
+		geistX=xWhile;
+		geistY=yWhile;
+		System.out.println("Ziel X "+zielX);
+		System.out.println("Ziel Y "+zielY);
+	}
 		
 		
 		
