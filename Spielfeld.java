@@ -11,7 +11,7 @@ public class Spielfeld extends JPanel{
 	static final String[] filenames = {"h_wand.png","v_wand.png",
 										"o_wand.png","r_wand.png","u_wand.png","l_wand.png",
 										"ro_wand.png","ru_wand.png","lo_wand.png","lu_wand.png",
-										"oru_wand.png","rul_wand.png","oul_wand.png","olr_wand.png",
+										"oru_wand.png","rul_wand.png","oul_wand.png","olr_wand.png","roul_wand.png",
 										"trennwand.png",
 										"punkt.png","power.png","pac_start.png","pac_eat1.png"}; 
 	static final int H_WAND = 			0;
@@ -28,11 +28,12 @@ public class Spielfeld extends JPanel{
 	static final int RUL_WAND = 		11;
 	static final int OUL_WAND = 		12;
 	static final int OLR_WAND = 		13;
-	static final int TRENNWAND_BILD = 	14;
-	static final int PUNKT_BILD = 		15;
-	static final int POWER_BILD = 		16;
-	static final int PAC_START = 		17;
-	static final int PAC_EAT1 = 		18;
+	static final int ROUL_WAND = 		14;
+	static final int TRENNWAND_BILD = 	15;
+	static final int PUNKT_BILD = 		16;
+	static final int POWER_BILD = 		17;
+	static final int PAC_START = 		18;
+	static final int PAC_EAT1 = 		19;
 	
 	static Image bild_array[] = new Image[filenames.length];
 	
@@ -43,37 +44,7 @@ public class Spielfeld extends JPanel{
 	public final int KIRSCHE = 4;
 	public final int TRENNWAND = 5;
 
-	public byte[][] feld = {		// 0=nix, 1=Wand, 2=Punkt; 3=Power ;4=Kirsche
-			/*{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
-			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
-			{0,1,3,1,0,1,2,1,0,1,2,1,2,1,0,1,2,1,0,1,3,1,0},
-			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
-			{0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0},
-			{0,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,2,1,0},
-			{0,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,2,1,0},
-			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
-			{0,1,1,1,1,1,2,1,1,1,2,2,2,1,1,1,2,1,1,1,1,1,0},
-			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
-			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
-			{0,1,1,1,1,1,2,1,0,0,0,0,0,0,0,1,2,1,1,1,1,1,0},
-			{0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0},
-			{0,1,1,1,1,1,2,1,0,0,0,0,0,0,0,1,2,1,1,1,1,1,0},
-			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
-			{0,0,0,0,0,1,2,1,0,1,1,1,1,1,0,1,2,1,0,0,0,0,0},
-			{0,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1,1,0},
-			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
-			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
-			{0,1,3,2,2,1,2,2,2,2,2,2,2,2,2,2,2,1,2,2,3,1,0},
-			{0,1,1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1,1,0},
-			{0,1,1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1,1,0},
-			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
-			{0,1,2,1,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1,0},
-			{0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0},
-			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}*/
-			
+	public byte[][] feld = {		// 0=nix, 1=Wand, 2=Punkt; 3=Power ;4=Kirsche		
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		 	{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
 			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
@@ -105,6 +76,7 @@ public class Spielfeld extends JPanel{
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} 
 	};	// x,y	21,27
 
+	private byte[][] backup = feld;
 	
 	
 	public int breite = (feld[0].length-2)*20;
@@ -285,14 +257,15 @@ public class Spielfeld extends JPanel{
 	private void spielfeld_zeichnen(Graphics g) {			// für zeichnen immer x2 benutzen!!! wehe nicht
 		
 		int size = 20;
-		
+		boolean komplett = false;
 		for(int y=0;y<28;y++)
 		{
 			for(int x=0;x<22;x++)
 			{
 				int x2 = x-1;
-				if(feld[y][x]==2)
+				if(feld[y][x]==2) {
 					g.drawImage(bild_array[PUNKT_BILD], (x2)*size, y*size, this);
+					komplett=true; }
 				if(feld[y][x]==3)
 					g.drawImage(bild_array[POWER_BILD], (x2)*size, y*size, this);
 				if(feld[y][x]==5)
@@ -341,8 +314,12 @@ public class Spielfeld extends JPanel{
 						g.drawImage(bild_array[OUL_WAND], x2*size, y*size, this);
 					if(oben==true && rechts==true && unten==false && links==true)
 						g.drawImage(bild_array[OLR_WAND], x2*size, y*size, this);
+					if(oben==true && rechts==true && unten==true && links==true)
+						g.drawImage(bild_array[ROUL_WAND], x2*size, y*size, this);
 				}
 			}
 		}
+		if (komplett==true)
+			feld = backup;
 	}
 }
