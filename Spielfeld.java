@@ -116,14 +116,13 @@ public class Spielfeld extends JPanel{
 		int x = pac_x+vx[pac_richtung];
 		int y = pac_y+vy[pac_richtung];
 
-		System.out.println(x+"  "+y);
 		if(y==13 && (x==0 || x==27)) {
 			if(x==0)
 				pac_x = 26;
 			else
 				pac_x = 0;
 		}	
-		else if(feld[y][x]!=1 && feld[y][x]!=5)
+		else if(feld[y][x]!=1 && feld[y][x]!=5) // ArrayOutOfBounds Exception, wenn man durch die Tunnel geht!
 		{
 			if(feld[y][x]==2)
 			{
