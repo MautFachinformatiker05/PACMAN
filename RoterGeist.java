@@ -18,13 +18,16 @@ public class RoterGeist {
 		int yWhile=0;
 		int zufall=0;
 		//		Dummy
-		int zielY=0;
-		int zielX=0;
+		int zielY=Game.feld.pac_y;
+		int zielX=Game.feld.pac_x;
 		//
 
+		xTemp=geistX;
+		yTemp=geistY;
+		
+		
 		vyAchse=Integer.signum(zielY-geistY);
 		vxAchse=Integer.signum(zielX-geistX);
-		
 		// Gerader Weg
 		if (vyAchse!=0){
 			geistY+=vyAchse;
@@ -32,10 +35,12 @@ public class RoterGeist {
 		else{
 			geistX+=vxAchse;
 		}
+		System.out.println("gerader weg");
 
+		System.out.println("Feld das der geist wählen möchte " +Game.feld.feld[geistY][geistX]);
 		// Wenn kein gerader Weg zum Ziel gefunden, ausprobieren
-		while (Game.feld.feld[geistY][geistX]=='1'){
-
+		while (Game.feld.feld[geistY][geistX]==1){
+				System.out.println("Raten \n \n \n");
 			zufall=(int)(Math.random()*4+1);
 			xWhile=xTemp;
 			yWhile=yTemp;
@@ -55,12 +60,23 @@ public class RoterGeist {
 			geistX=xWhile;
 			geistY=yWhile;
 		}
-
+		
+		System.out.println("Der Abstand zu Pacman ist " + abstand(geistX, geistY, zielX, zielY));
+		if (abstand(geistX, geistY, zielX, zielY)==0){
+			System.exit(0);
+		}
+//		Game.feld.feld[2][1]='4';
+		
 
 
 	}
 	void draw (){
 		
+	}
+	double abstand (double _startX,double _startY,double _zielX,double _zielY){
+		 double distance=0;
+		distance= Math.sqrt(Math.pow(_startX-_zielX, 2)+Math.pow(_startY -_zielY,2));
+		return distance;
 	}
 
 }
