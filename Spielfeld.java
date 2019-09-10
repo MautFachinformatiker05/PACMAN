@@ -1,8 +1,14 @@
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Spielfeld extends JPanel{
 
+	static final String[] filenames = {"h_wand.png","v_wand.png",
+										"o_wand.png","r_wand.png","u_wand.png","l_wand.png",
+										"ro_wand.png","ru_wand.png","lo_wand.png","lu_wand.png"}; 
+	
 	public final int NICHTS = 0;
 	public final int WAND = 1;
 	public final int PUNKT = 2;
@@ -32,7 +38,7 @@ public class Spielfeld extends JPanel{
 			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
 			{0,1,3,2,2,1,2,2,2,2,2,2,2,2,2,2,2,1,2,2,3,1,0},
-			{0,1,1,1,2,1,2,2,2,1,1,1,1,1,2,2,2,1,2,1,1,1,0},
+			{0,1,1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1,1,0},
 			{0,1,1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1,1,0},
 			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1,0},
@@ -60,7 +66,7 @@ public class Spielfeld extends JPanel{
 			{0,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,2,1,0},
 			{0,1,3,2,2,1,2,2,2,2,2,2,2,2,2,2,2,1,2,2,3,1,0},
-			{0,1,1,1,2,1,2,2,2,1,1,1,1,1,2,2,2,1,2,1,1,1,0},
+			{0,1,1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1,1,0},
 			{0,1,1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1,1,0},
 			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
 			{0,1,2,1,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1,0},
@@ -68,7 +74,8 @@ public class Spielfeld extends JPanel{
 			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0} */
 	};	// x,y	21,27
 
-
+	
+	
 	public int breite = feld[0].length*20;
 	public int hoehe = feld[1].length*20;
 
@@ -142,6 +149,7 @@ public class Spielfeld extends JPanel{
 		pac_move();
 		rot.move();
 		pac_touch();
+		repaint();
 	}
 
 	private void pac_touch() {
@@ -211,6 +219,23 @@ public class Spielfeld extends JPanel{
 			pac_y+=vy[pac_richtung];
 		}
 
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		
+		super.paintComponent(g);
+		spielfeld_zeichnen(g);
+		
+		rot.draw(g);
+		
+	}
+
+
+	private void spielfeld_zeichnen(Graphics g) {
+		
+		//g.drawImage(img, x, y, observer);
+		
 	}
 
 	/*
