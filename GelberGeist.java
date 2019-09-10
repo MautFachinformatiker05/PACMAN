@@ -1,10 +1,14 @@
-public class GelberGeist extends RoterGeist {
+public class GelberGeist extends Geist {
 
-	public GelberGeist(int _startX, int _startY) {
-		super(_startX, _startY);
-
+	
+	public GelberGeist(int _startX, int _startY, String bildText) {
+		super(_startX, _startY, bildText);
+		
 	}
+
 	void move(){
+		zielX=Game.feld.pac_x;
+		zielY=Game.feld.pac_y;
 		int vxAchse=0;
 		int vyAchse=0;
 		int xTemp=0;
@@ -15,8 +19,7 @@ public class GelberGeist extends RoterGeist {
 		int [] zielYX;
 		xTemp=geistX;
 		yTemp=geistY;
-		int zielX=Game.feld.pac_x;
-		int zielY=Game.feld.pac_y;
+		
 		
 		if (abstand(geistX, geistY, zielX, zielY)>5){
 			zielYX=sektorenVerteidiger();

@@ -1,0 +1,41 @@
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+public abstract class Geist {
+	int geistX;
+	int geistY;
+	Image bild;
+	int zielY;
+	int zielX;
+
+	public Geist(int _startX, int _startY, String bildText) {
+		this.geistX = _startX;
+		this.geistY = _startY;
+		bild = (new ImageIcon(bildText).getImage());
+	
+
+	}
+
+	abstract void move();
+
+	void draw(Graphics g) {
+		int size = 20;
+		g.drawImage(bild, geistX * size, geistY * size, Game.feld);
+
+	}
+
+	double abstand(double _startX, double _startY, double _zielX, double _zielY) {
+		double distance = 0;
+		distance = Math.sqrt(Math.pow(_startX - _zielX, 2) + Math.pow(_startY - _zielY, 2));
+		return distance;
+	}
+
+	boolean isWall(int _y, int _x) {
+		if (Game.feld.feld[_y][_x] == 1) {
+			return true;
+		}
+
+		return false;
+	}
+}
