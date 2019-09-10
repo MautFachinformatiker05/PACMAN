@@ -234,7 +234,7 @@ public class Spielfeld extends JPanel{
 
 	private void spielfeld_zeichnen(Graphics g) {
 		
-		g.drawImage(img, x, y, observer);
+		//g.drawImage(img, x, y, observer);
 		
 	}
 
