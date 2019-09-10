@@ -111,6 +111,7 @@ public class Spielfeld extends JPanel{
 	public int pac_richtung = 0; // l,o,r,u
 	public int score = 0;
 	RoterGeist rot = new RoterGeist(11, 11);
+	BlauerGeist blau = new BlauerGeist(10, 10);
 
 
 	public Spielfeld() {
@@ -158,7 +159,11 @@ public class Spielfeld extends JPanel{
 				{
 					System.out.print("R");
 				}
-				if((pac_x==x+1 && pac_y==y) || (rot.geistX==x+1 && rot.geistY==y )) {
+				if(blau.geistX==x && blau.geistY==y)
+				{
+					System.out.print("B");
+				}
+				if((pac_x==x+1 && pac_y==y) || (rot.geistX==x+1 && rot.geistY==y ) || (blau.geistX==x+1 && blau.geistY==y)) {
 					System.out.print("");
 				}
 				else
@@ -177,6 +182,7 @@ public class Spielfeld extends JPanel{
 		ausgabe_konsole();
 		pac_move();
 		rot.move();
+		blau.move();
 		pac_touch();
 		repaint();
 	}
@@ -184,7 +190,7 @@ public class Spielfeld extends JPanel{
 	private void pac_touch() {
 		
 		// Geist berührt? 
-		if (pac_x==rot.geistX && pac_y==rot.geistY)
+		if (pac_x==rot.geistX && pac_y==rot.geistY || pac_x==blau.geistX && pac_y==blau.geistY )
 		{
 			if (Game.frightened==false)
 			{
