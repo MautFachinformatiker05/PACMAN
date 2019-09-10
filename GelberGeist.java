@@ -66,8 +66,16 @@ public class GelberGeist extends Geist {
 		else {
 			yWhile++;
 		}
-		geistX=xWhile;
-		geistY=yWhile;
+		int randomX=(int)(Math.random()*5);
+		int randomY=(int)(Math.random()*5);
+		int vorzeichen=1;
+		if (Math.random()>0.5){
+			vorzeichen=-1;
+		}
+		randomX*=vorzeichen;
+		randomY*=vorzeichen;
+		geistX=xWhile+randomX;
+		geistY=yWhile+randomY;
 		
 		
 	}
