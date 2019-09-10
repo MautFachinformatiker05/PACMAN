@@ -80,5 +80,12 @@ public class RoterGeist {
 		distance= Math.sqrt(Math.pow(_startX-_zielX, 2)+Math.pow(_startY -_zielY,2));
 		return distance;
 	}
+	boolean isWall(int _y, int _x){
+		if (Game.feld.feld[_y][_x]==1){
+			return true;
+		}
+		
+		return false;
+	}
 
 }
