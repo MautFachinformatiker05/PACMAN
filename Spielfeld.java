@@ -94,7 +94,7 @@ public class Spielfeld extends JPanel{
 	RoterGeist rot = new RoterGeist(GEIST_START_X, GEIST_START_Y,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(GEIST_START_X, GEIST_START_Y,"blau_geist.png");
 	GelberGeist gelb = new GelberGeist(GEIST_START_X, GEIST_START_Y, "gelb_geist.png");
-	
+	long old_time = 0;
 	
 	
 	
@@ -222,7 +222,6 @@ public class Spielfeld extends JPanel{
 
 		int x = pac_x+vx[pac_richtung];
 		int y = pac_y+vy[pac_richtung];
-//		System.out.println(feld.length+"  "+feld[0].length);
 		
 		if((x==0 || x==22)) {
 			if(x==0)
@@ -265,7 +264,6 @@ public class Spielfeld extends JPanel{
 		rot.draw(g);
 		blau.draw(g);
 		gelb.draw(g);
-		repaint();
 	}
 
 
@@ -279,7 +277,8 @@ public class Spielfeld extends JPanel{
 	private void spielfeld_zeichnen(Graphics g) {			// für zeichnen immer x2 benutzen!!! wehe nicht
 		
 		int size = 20;
-		boolean komplett = false;
+		boolean komplett = true;
+		old_time = System.currentTimeMillis();
 		for(int y=0;y<28;y++)
 		{
 			for(int x=0;x<22;x++)
@@ -287,7 +286,7 @@ public class Spielfeld extends JPanel{
 				int x2 = x-1;
 				if(feld[y][x]==2) {
 					g.drawImage(bild_array[PUNKT_BILD], (x2)*size, y*size, this);
-					komplett=true; }
+					komplett=false; }
 				if(feld[y][x]==3)
 					g.drawImage(bild_array[POWER_BILD], (x2)*size, y*size, this);
 				if(feld[y][x]==5)
@@ -304,6 +303,7 @@ public class Spielfeld extends JPanel{
 						unten = true;
 					if(feld[y][x-1]==1)
 						links = true;
+					
 					
 					if(oben==false && rechts==true && unten==false && links==true)
 						g.drawImage(bild_array[H_WAND], x2*size, y*size, this);
@@ -353,8 +353,10 @@ public class Spielfeld extends JPanel{
 		{
 			g.drawImage(bild_array[PAC_EAT1], (int)((6.5+i*1.5)*size), 28*size, this);
 		}
-		
 		if (komplett==true)
 			feld = backup;
+		
+		long new_time = System.currentTimeMillis();
+		System.out.println("Delay: "+(new_time-old_time));
 	}
 }

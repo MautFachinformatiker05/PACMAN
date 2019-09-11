@@ -127,7 +127,7 @@ public abstract class Geist {
 		prisonCounter--;
 		if (prisonCounter==0){
 			isPrison=false;
-			System.out.println("Ausbrauch");
+			
 			
 		}
 	}
