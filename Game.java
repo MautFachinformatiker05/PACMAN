@@ -7,15 +7,14 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Game extends JFrame implements ActionListener{
-	
+
 	public static Spielfeld feld ;
 	public static boolean running=true;
 	public static boolean frightened=false;
 	public static int counter = 0;
-	
-	final int FRAMERATE = 60;
-	final int SKIP_TICKS = 10;
-	
+//	public static int frames = 0;
+
+
 	public Game() {
 		setTitle("PACMAN");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -28,7 +27,7 @@ public class Game extends JFrame implements ActionListener{
 	}
 
 	public static void main(String[] args) {
-		
+
 		Game spiel = new Game();
 		feld = new Spielfeld();
 		spiel.add(feld);
@@ -36,16 +35,21 @@ public class Game extends JFrame implements ActionListener{
 		spiel.pack();
 		spiel.setVisible(true);
 		spiel.addKeyListener(new Steuerung ());
-		
-		System.out.println("TEST ABGESCHLOSSEN");
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if(running && feld.pac_leben!=0) {
-			feld.update();
-			this.setTitle("PACMAN     Score: "+feld.score);
-		}
+
+//		if (frames >= 30)
+//		{
+//			if(running && feld.pac_leben!=0)
+//			{
+				feld.update();
+				this.setTitle("PACMAN     Score: "+feld.score);
+//				frames = 0;
+//			}
+//		}
+//		feld.repaint();
+//		frames++;
 	}
 }

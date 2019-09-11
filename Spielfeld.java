@@ -92,7 +92,7 @@ public class Spielfeld extends JPanel{
 	RoterGeist rot = new RoterGeist(11, 11,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(10, 10,"blau_geist.png");
 	GelberGeist gelb = new GelberGeist(9, 11, "gelb_geist.png");
-	
+	long old_time = 0;
 	
 	
 	
@@ -220,7 +220,6 @@ public class Spielfeld extends JPanel{
 
 		int x = pac_x+vx[pac_richtung];
 		int y = pac_y+vy[pac_richtung];
-//		System.out.println(feld.length+"  "+feld[0].length);
 		
 		if((x==0 || x==22)) {
 			if(x==0)
@@ -276,7 +275,8 @@ public class Spielfeld extends JPanel{
 	private void spielfeld_zeichnen(Graphics g) {			// für zeichnen immer x2 benutzen!!! wehe nicht
 		
 		int size = 20;
-		boolean komplett = false;
+		boolean komplett = true;
+		old_time = System.currentTimeMillis();
 		for(int y=0;y<28;y++)
 		{
 			for(int x=0;x<22;x++)
@@ -284,7 +284,7 @@ public class Spielfeld extends JPanel{
 				int x2 = x-1;
 				if(feld[y][x]==2) {
 					g.drawImage(bild_array[PUNKT_BILD], (x2)*size, y*size, this);
-					komplett=true; }
+					komplett=false; }
 				if(feld[y][x]==3)
 					g.drawImage(bild_array[POWER_BILD], (x2)*size, y*size, this);
 				if(feld[y][x]==5)
@@ -302,7 +302,7 @@ public class Spielfeld extends JPanel{
 					if(feld[y][x-1]==1)
 						links = true;
 					
-					long old_time = System.currentTimeMillis();
+					
 					if(oben==false && rechts==true && unten==false && links==true)
 						g.drawImage(bild_array[H_WAND], x2*size, y*size, this);
 					if(oben==true && rechts==false && unten==true && links==false)
@@ -336,9 +336,6 @@ public class Spielfeld extends JPanel{
 						g.drawImage(bild_array[OLR_WAND], x2*size, y*size, this);
 					if(oben==true && rechts==true && unten==true && links==true)
 						g.drawImage(bild_array[ROUL_WAND], x2*size, y*size, this);
-					
-					long new_time = System.currentTimeMillis();
-					System.out.println("Delay: "+(new_time-old_time));
 				}
 			}
 		}
@@ -354,8 +351,10 @@ public class Spielfeld extends JPanel{
 		{
 			g.drawImage(bild_array[PAC_EAT1], (int)((6.5+i*1.5)*size), 28*size, this);
 		}
-		
 		if (komplett==true)
 			feld = backup;
+		
+		long new_time = System.currentTimeMillis();
+		System.out.println("Delay: "+(new_time-old_time));
 	}
 }
