@@ -271,7 +271,10 @@ public class Spielfeld extends JPanel{
 	private void pacman_zeichnen(Graphics g) {
 		
 		int size = 20;
-		g.drawImage(bild_array[PAC_START], (pac_x-1)*size, pac_y*size, this);
+		int [] vx =  {+1, 0, -1, 0, 0}; 
+		int [] vy =  {0, +1, 0, -1, 0};
+		
+		g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[pac_richtung]), pac_y*size+(Game.frames*vy[pac_richtung]), this);
 	}
 
 

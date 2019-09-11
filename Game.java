@@ -12,7 +12,7 @@ public class Game extends JFrame implements ActionListener{
 	public static boolean running=true;
 	public static boolean frightened=false;
 	public static int counter = 0;
-	public static int frames = 0;
+	public static int frames = 20;
 	Timer timer = new Timer(9,this);
 
 
@@ -46,16 +46,16 @@ public class Game extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (frames >= 20)
+		if (frames == 0)
 		{
 			if(running && feld.pac_leben!=0)
 			{
 				feld.update();
 				this.setTitle("PACMAN     Score: "+feld.score);
-				frames = 0;
+				frames = 20;
 			}
 		}
 		feld.repaint();
-		frames++;
+		frames--;
 	}
 }
