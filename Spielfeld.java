@@ -170,9 +170,9 @@ public class Spielfeld extends JPanel{
 	{
 //		ausgabe_konsole();
 		pac_move();
-		rot.run();
-		blau.run();
-		gelb.run();
+//		rot.run();
+//		blau.run();
+//		gelb.run();
 		pac_touch();
 		repaint();
 	}

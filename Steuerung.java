@@ -9,23 +9,33 @@ import javax.swing.JPanel;
 public class Steuerung extends KeyAdapter {
 
 
+	public void keyTyped(KeyEvent e) {
+		
+		
+	}
+	
+	
+	int lastPressedKeyId = 0; 
+	
 	public void keyReleased(KeyEvent e) {
 
 		super.keyReleased(e);
-		Game.feld.pac_richtung=4;
+		
+		int key_id = e.getKeyCode();
+		
+		if (key_id == lastPressedKeyId) {
+			Game.feld.pac_richtung=4;
+		}
+		
 	}
 
 	@Override 
 	public void keyPressed(KeyEvent e){
 
-		int key_id = e.getKeyCode();  
-
-		//LEFT, UP, RIGHT, DOWN
-		int [] vx =  {-1, 0, +1, 0}; 
-		int [] vy =  {0, -1, 0, +1};
-
+		lastPressedKeyId = e.getKeyCode();
+				
 		if (Game.running) {
-			switch (key_id){
+			switch (lastPressedKeyId){
 
 			case KeyEvent.VK_LEFT: 
 				//			System.out.println("L");
