@@ -13,6 +13,9 @@ public class Game extends JFrame implements ActionListener{
 	public static boolean frightened=false;
 	public static int counter = 0;
 	
+	final int FRAMERATE = 60;
+	final int SKIP_TICKS = 10;
+	
 	public Game() {
 		setTitle("PACMAN");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
