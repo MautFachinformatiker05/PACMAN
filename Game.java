@@ -1,8 +1,12 @@
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class Game extends JFrame{
+public class Game extends JFrame implements ActionListener{
 	
 	public static Spielfeld feld ;
 	public static boolean running=true;
@@ -16,6 +20,8 @@ public class Game extends JFrame{
 		this.pack();
 		setLocationRelativeTo(null);
 		setResizable(false);
+		Timer timer = new Timer(250,this);
+		timer.start(); 
 	}
 
 	public static void main(String[] args) {
@@ -28,18 +34,15 @@ public class Game extends JFrame{
 		spiel.setVisible(true);
 		spiel.addKeyListener(new Steuerung ());
 		
-		while(running && feld.pac_leben!=0) {
-			try {
-				Thread.sleep(250);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			feld.update();
-			spiel.setTitle("PACMAN     Score: "+feld.score);
-		}
-		
-	
 		System.out.println("TEST ABGESCHLOSSEN");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(running && feld.pac_leben!=0) {
+			feld.update();
+			this.setTitle("PACMAN     Score: "+feld.score);
+		}
 	}
 }
