@@ -13,6 +13,7 @@ public abstract class Geist {
 	int deathtimerPrevioustick;
 	boolean isPrison;
 	int prisonCounter;
+	int alte_richtung = 4;
 
 	public Geist(int _startX, int _startY, String bildText) {
 		this.geistX = _startX;
@@ -31,13 +32,15 @@ public abstract class Geist {
 			ausbrauch();
 		}
 		
-		else if ( this.deathtimerPrevioustick==1){
+		else if ( this.deathtimerPrevioustick==2){
 			this.respawn();
 			
 		}
 		 else if (this.deathtimer != 0){
 				this.deathtimerPrevioustick=this.deathtimer;
 				this.deathtimer--;
+				this.geistX=Spielfeld.GEIST_START_X;
+				this.geistY=Spielfeld.GEIST_START_Y;
 				
 			}
 		else {
@@ -48,8 +51,6 @@ public abstract class Geist {
 	}
 	
 	void respawn(){
-		this.geistX=Spielfeld.GEIST_START_X;
-		this.geistY=Spielfeld.GEIST_START_Y;
 		this.deathtimer=0;
 		this.deathtimerPrevioustick=0;
 		isPrison=true;
@@ -58,9 +59,12 @@ public abstract class Geist {
 	abstract void move();
 
 	void draw(Graphics g) {
+		int [] vx =  {+1, 0, -1, 0, 0}; 
+		int [] vy =  {0, +1, 0, -1, 0};
+		
 		if (this.deathtimer == 0) {
 			int size = 20;
-			g.drawImage(bild, (geistX - 1) * size, geistY * size, Game.feld);
+			g.drawImage(bild, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vx[alte_richtung]), Game.feld);
 			if (Game.frightened == false) {
 				g.drawImage(bild2, ((geistX - 1) * size) + 6, (geistY * size) + 6, Game.feld);
 				g.drawImage(bild2, ((geistX - 1) * size) + 12, (geistY * size) + 6, Game.feld);

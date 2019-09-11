@@ -36,8 +36,9 @@ public class Spielfeld extends JPanel{
 	static final int POWER_BILD = 		17;
 	static final int PAC_START = 		18;
 	static final int PAC_EAT1 = 		19;
+	
 	static final int GEIST_START_X  =   11; 
-	static final int GEIST_START_Y  =   12;
+	static final int GEIST_START_Y  =   13;
 	
 	static Image bild_array[] = new Image[filenames.length];
 	
@@ -170,9 +171,9 @@ public class Spielfeld extends JPanel{
 	{
 //		ausgabe_konsole();
 		pac_move();
-//		rot.run();
-//		blau.run();
-//		gelb.run();
+		rot.run();
+		blau.run();
+		gelb.run();
 		pac_touch();
 		repaint();
 	}
