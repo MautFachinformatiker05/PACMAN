@@ -74,4 +74,15 @@ public abstract class Geist {
 			
 		}
 	}
+	void tunnel_teleport (){
+		if((geistX==0 || geistX==22)){
+			if (geistX==0){
+				geistX=21;
+			}
+			else {
+				geistX=1;
+			}
+			
+		}
+	}
 }

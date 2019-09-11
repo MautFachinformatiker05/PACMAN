@@ -70,6 +70,7 @@ public class GelberGeist extends Geist {
 		geistX=xWhile;
 		geistY=yWhile;
 		
+		tunnel_teleport ();
 		
 	}
 		

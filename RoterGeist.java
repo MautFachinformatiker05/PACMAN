@@ -45,6 +45,7 @@ public class RoterGeist extends Geist {
 			}
 			geistX = xWhile;
 			geistY = yWhile;
+			tunnel_teleport ();
 		}
 
 	}
