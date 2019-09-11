@@ -6,7 +6,7 @@ public class GelberGeist extends Geist {
 		
 	}
 
-	void move(){
+	void planen(){
 		zielX=Game.feld.pac_x;
 		zielY=Game.feld.pac_y;
 		int vxAchse=0;
@@ -66,12 +66,12 @@ public class GelberGeist extends Geist {
 		geistX=xWhile;
 		geistY=yWhile;
 		
-		tunnel_teleport ();
+		
 		
 	}
 		
 		
-		
+		tunnel_teleport ();
 		
 		
 	}

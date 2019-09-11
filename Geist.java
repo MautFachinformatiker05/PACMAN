@@ -14,6 +14,11 @@ public abstract class Geist {
 	boolean isPrison;
 	int prisonCounter;
 	int alte_richtung = 4;
+	final int rechts =0;
+	final int links =3;
+	final int oben  =2;
+	final int unten =1;
+	int richtung;
 
 	public Geist(int _startX, int _startY, String bildText) {
 		this.geistX = _startX;
@@ -44,11 +49,21 @@ public abstract class Geist {
 				
 			}
 		else {
-			move();
+			planen();
 			
 		}
 		
 	}
+	 void move (int _richtung){
+		 int [] vx =  {+1, 0, -1, 0, 0}; 
+		 int [] vy =  {0, +1, 0, -1, 0};
+		 alte_richtung=_richtung;
+		 geistX+=vx[_richtung];
+		 geistY+=vy[_richtung];
+		 
+		 
+		 
+	 }
 	
 	void respawn(){
 		this.deathtimer=0;
@@ -56,7 +71,7 @@ public abstract class Geist {
 		isPrison=true;
 		prisonCounter=2;
 	}
-	abstract void move();
+	abstract void planen();
 
 	void draw(Graphics g) {
 		int [] vx =  {+1, 0, -1, 0, 0}; 

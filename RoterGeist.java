@@ -5,7 +5,7 @@ public class RoterGeist extends Geist {
 
 	}
 
-	void move() {
+	void planen() {
 		zielX = Game.feld.pac_x;
 		zielY = Game.feld.pac_y;
 		checkFrightened();

@@ -5,7 +5,7 @@ public class BlauerGeist extends Geist {
 
 	}
 
-	void move() {
+	void planen() {
 		zielY = Game.feld.pac_y;
 		zielX = Game.feld.pac_x;
 		checkFrightened();
