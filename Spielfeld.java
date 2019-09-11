@@ -92,7 +92,11 @@ public class Spielfeld extends JPanel{
 	RoterGeist rot = new RoterGeist(11, 11,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(10, 10,"blau_geist.png");
 	GelberGeist gelb = new GelberGeist(9, 11, "gelb_geist.png");
-
+	
+	
+	
+	
+	
 
 	public Spielfeld() {
 
@@ -162,9 +166,9 @@ public class Spielfeld extends JPanel{
 	{
 //		ausgabe_konsole();
 		pac_move();
-		rot.move();
-		blau.move();
-		gelb.move();
+		rot.run();
+		blau.run();
+		gelb.run();
 		pac_touch();
 		repaint();
 	}
@@ -183,8 +187,19 @@ public class Spielfeld extends JPanel{
 			}
 			else
 			{
+				if (pac_x==rot.geistX && pac_y==rot.geistY){
 				score+=100;
-				// Methode -> roter Geist stirbt und respawned später
+				rot.deathtimer=15;
+				}
+				else if (pac_x==blau.geistX && pac_y==blau.geistY){
+					score+=100;
+					blau.deathtimer=15;
+				}
+				else if (pac_x==gelb.geistX && pac_y==gelb.geistY){
+					score+=100;
+					gelb.deathtimer=15;
+				}
+				
 			}
 		}
 		// Frightened?
