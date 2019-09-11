@@ -26,13 +26,16 @@ public abstract class Geist {
 		
 		 if ( this.deathtimerPrevioustick==1){
 			this.respawn();
+			
 		}
 		 else if (this.deathtimer != 0){
 				this.deathtimerPrevioustick=this.deathtimer;
 				this.deathtimer--;
+				
 			}
 		else {
 			move();
+			
 		}
 		
 	}
@@ -41,6 +44,7 @@ public abstract class Geist {
 		this.geistX=10;
 		this.geistY=10;
 		this.deathtimer=0;
+		this.deathtimerPrevioustick=0;
 	}
 	abstract void move();
 

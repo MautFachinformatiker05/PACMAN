@@ -25,11 +25,7 @@ public class GelberGeist extends Geist {
 			zielYX=sektorenVerteidiger();
 			zielY=zielYX[0];
 			zielX=zielYX[1];
-			System.out.println("Gelber Geist");
-			System.out.println("Der Abstand ist "+ abstand(geistX, geistY, zielX, zielY));
-			System.out.println("Verteidige Sektor");
-			System.out.println("Ziel X "+zielX);
-			System.out.println("Ziel Y "+zielY);
+			
 		}
 		
 		
