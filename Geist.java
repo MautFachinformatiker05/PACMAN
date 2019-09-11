@@ -7,6 +7,7 @@ public abstract class Geist {
 	int geistY;
 	Image bild;
 	Image bild2;
+	Image bild_schatten;
 	int zielY;
 	int zielX;
 	int deathtimer;
@@ -25,6 +26,7 @@ public abstract class Geist {
 		this.geistY = _startY;
 		bild = (new ImageIcon(bildText).getImage());
 		bild2 = (new ImageIcon("pupille.png").getImage());
+		bild2 = (new ImageIcon("schatten_geist.png").getImage());
 		deathtimer = 0;
 		deathtimerPrevioustick = 0;
 		isPrison=true;
@@ -87,6 +89,17 @@ public abstract class Geist {
 				g.drawImage(bild2, ((geistX - 1) * size) + 5 + (int) (Math.random() * 4)+(Game.frames*vx[alte_richtung]),(geistY * size) + 5 + (int) (Math.random() * 4)+(Game.frames*vy[alte_richtung]), Game.feld);
 				g.drawImage(bild2, ((geistX - 1) * size) + 11 + (int) (Math.random() * 4)+(Game.frames*vx[alte_richtung]),(geistY * size) + 5 + (int) (Math.random() * 4)+(Game.frames*vy[alte_richtung]), Game.feld);
 			}
+		}
+	}
+	
+	void draw_shadow(Graphics g)
+	 {
+		int [] vx =  {-1, 0, +1, 0, 0}; 
+		int [] vy =  {0, -1, 0, +1, 0};
+		
+		if (this.deathtimer == 0) {
+			int size = 20;
+			g.drawImage(bild_schatten, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vy[alte_richtung]), Game.feld);
 		}
 	}
 

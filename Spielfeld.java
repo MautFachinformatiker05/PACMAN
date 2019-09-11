@@ -272,6 +272,10 @@ public class Spielfeld extends JPanel{
 		spielfeld_zeichnen(g);
 		pacman_zeichnen(g);
 		
+		rot.draw_shadow(g);
+		blau.draw_shadow(g);
+		gelb.draw_shadow(g);
+		
 		rot.draw(g);
 		blau.draw(g);
 		gelb.draw(g);
