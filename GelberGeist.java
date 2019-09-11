@@ -92,7 +92,7 @@ public class GelberGeist extends Geist {
 		
 		
 		for (int i=0;i <4;i++){
-			temp_score=bewertung(0);
+			temp_score=bewertung(i);
 			if (temp_score>best_score){
 				best_score=temp_score;
 				best_sektor=i;
@@ -145,6 +145,7 @@ public class GelberGeist extends Geist {
 		case 1:
 			xStart = 11;
 			xSektor = 22;
+			ySektor=14;
 			break;
 		case 2:
 			yStart = 14;
@@ -162,8 +163,10 @@ public class GelberGeist extends Geist {
 					score += aktuellesFeld;
 				}
 			}
+			
 		}
 
+		
 		return score;
 
 	}
