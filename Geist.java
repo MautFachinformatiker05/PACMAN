@@ -26,7 +26,7 @@ public abstract class Geist {
 		this.geistY = _startY;
 		bild = (new ImageIcon(bildText).getImage());
 		bild2 = (new ImageIcon("pupille.png").getImage());
-		bild2 = (new ImageIcon("schatten_geist.png").getImage());
+		bild_schatten = (new ImageIcon("schatten_geist.png").getImage());
 		deathtimer = 0;
 		deathtimerPrevioustick = 0;
 		isPrison=true;
