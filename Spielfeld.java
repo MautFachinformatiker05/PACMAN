@@ -303,6 +303,7 @@ public class Spielfeld extends JPanel{
 					if(feld[y][x-1]==1)
 						links = true;
 					
+					long old_time = System.currentTimeMillis();
 					if(oben==false && rechts==true && unten==false && links==true)
 						g.drawImage(bild_array[H_WAND], x2*size, y*size, this);
 					if(oben==true && rechts==false && unten==true && links==false)
@@ -336,6 +337,9 @@ public class Spielfeld extends JPanel{
 						g.drawImage(bild_array[OLR_WAND], x2*size, y*size, this);
 					if(oben==true && rechts==true && unten==true && links==true)
 						g.drawImage(bild_array[ROUL_WAND], x2*size, y*size, this);
+					
+					long new_time = System.currentTimeMillis();
+					System.out.println("Delay: "+(new_time-old_time));
 				}
 			}
 		}
