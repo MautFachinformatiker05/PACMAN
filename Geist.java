@@ -74,20 +74,18 @@ public abstract class Geist {
 	abstract void planen();
 
 	void draw(Graphics g) {
-		int [] vx =  {+1, 0, -1, 0, 0}; 
-		int [] vy =  {0, +1, 0, -1, 0};
+		int [] vx =  {-1, 0, +1, 0, 0}; 
+		int [] vy =  {0, -1, 0, +1, 0};
 		
 		if (this.deathtimer == 0) {
 			int size = 20;
-			g.drawImage(bild, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vx[alte_richtung]), Game.feld);
+			g.drawImage(bild, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vy[alte_richtung]), Game.feld);
 			if (Game.frightened == false) {
-				g.drawImage(bild2, ((geistX - 1) * size) + 6, (geistY * size) + 6, Game.feld);
-				g.drawImage(bild2, ((geistX - 1) * size) + 12, (geistY * size) + 6, Game.feld);
+				g.drawImage(bild2, ((geistX - 1) * size) + 6+(Game.frames*vx[alte_richtung]), (geistY * size) + 6+(Game.frames*vy[alte_richtung]), Game.feld);
+				g.drawImage(bild2, ((geistX - 1) * size) + 12+(Game.frames*vx[alte_richtung]), (geistY * size) + 6+(Game.frames*vy[alte_richtung]), Game.feld);
 			} else {
-				g.drawImage(bild2, ((geistX - 1) * size) + 5 + (int) (Math.random() * 4),
-						(geistY * size) + 5 + (int) (Math.random() * 4), Game.feld);
-				g.drawImage(bild2, ((geistX - 1) * size) + 11 + (int) (Math.random() * 4),
-						(geistY * size) + 5 + (int) (Math.random() * 4), Game.feld);
+				g.drawImage(bild2, ((geistX - 1) * size) + 5 + (int) (Math.random() * 4)+(Game.frames*vx[alte_richtung]),(geistY * size) + 5 + (int) (Math.random() * 4)+(Game.frames*vy[alte_richtung]), Game.feld);
+				g.drawImage(bild2, ((geistX - 1) * size) + 11 + (int) (Math.random() * 4)+(Game.frames*vx[alte_richtung]),(geistY * size) + 5 + (int) (Math.random() * 4)+(Game.frames*vy[alte_richtung]), Game.feld);
 			}
 		}
 	}
