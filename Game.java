@@ -12,7 +12,8 @@ public class Game extends JFrame implements ActionListener{
 	public static boolean running=true;
 	public static boolean frightened=false;
 	public static int counter = 0;
-//	public static int frames = 0;
+	public static int frames = 0;
+	Timer timer = new Timer(9,this);
 
 
 	public Game() {
@@ -22,8 +23,8 @@ public class Game extends JFrame implements ActionListener{
 		this.pack();
 		setLocationRelativeTo(null);
 		setResizable(false);
-		Timer timer = new Timer(250,this);
-		timer.start(); 
+		
+		
 	}
 
 	public static void main(String[] args) {
@@ -35,21 +36,26 @@ public class Game extends JFrame implements ActionListener{
 		spiel.pack();
 		spiel.setVisible(true);
 		spiel.addKeyListener(new Steuerung ());
+		spiel.starttimer();
+	}
+	
+	public void starttimer() {
+		timer.start(); 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-//		if (frames >= 30)
-//		{
-//			if(running && feld.pac_leben!=0)
-//			{
+		if (frames >= 20)
+		{
+			if(running && feld.pac_leben!=0)
+			{
 				feld.update();
 				this.setTitle("PACMAN     Score: "+feld.score);
-//				frames = 0;
-//			}
-//		}
-//		feld.repaint();
-//		frames++;
+				frames = 0;
+			}
+		}
+		feld.repaint();
+		frames++;
 	}
 }
