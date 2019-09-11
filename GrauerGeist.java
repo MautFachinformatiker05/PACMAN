@@ -7,18 +7,12 @@ public class GrauerGeist extends Geist {
 
 	}
 
-	void move() {
-		richtungen=new ArrayList<>();
-		zielY = Game.feld.pac_y;
-		zielX = Game.feld.pac_x;
-		checkFrightened();
-
-		
-		
-
-
-
-	}
+//	void move() {
+//		richtungen=new ArrayList<>();
+//		zielY = Game.feld.pac_y;
+//		zielX = Game.feld.pac_x;
+//		checkFrightened();
+//	}
 
 	@Override
 	void planen() {

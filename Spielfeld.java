@@ -178,7 +178,7 @@ public class Spielfeld extends JPanel{
 		rot.run();
 		blau.run();
 		gelb.run();
-//		grau.run();
+		grau.run();
 		pac_touch();
 		repaint();
 	}
@@ -281,10 +281,12 @@ public class Spielfeld extends JPanel{
 		rot.draw_shadow(g);
 		blau.draw_shadow(g);
 		gelb.draw_shadow(g);
+		grau.draw_shadow(g);
 		
 		rot.draw(g);
 		blau.draw(g);
 		gelb.draw(g);
+		grau.draw(g);
 	}
 
 

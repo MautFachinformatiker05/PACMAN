@@ -33,11 +33,10 @@ public abstract class Geist {
 	}
 
 	void run(){
-		if ( (geistX>=10 && geistX<=12) && (geistY>=13 && geistY<=15) ){				// sorry, manuel
-			if (geistY==15 || geistY==13  || (geistX==11 && geistY==14)) {				// aber neue ausbruch-methode quasi
-				move(OBEN);																// nur wollen die Geister auf dem letzen Feld bleiben?!?  BUG
-				if(geistY==12)
-					alte_richtung = 4;
+
+		if ( (geistX>=10 && geistX<=12) && (geistY>=12 && geistY<=15) ){				// sorry, manuel
+			if (geistY==15 || geistY==13 || geistY==12 || (geistX==11 && geistY==14)) {	// aber neue ausbruch-methode quasi
+				move(OBEN);	
 			}
 			else if(geistX==12 && geistY==14) {
 				move(LINKS);
@@ -56,9 +55,9 @@ public abstract class Geist {
 			this.deathtimer--;
 			this.geistX=Spielfeld.GEIST_START_X;
 			this.geistY=Spielfeld.GEIST_START_Y;
-
 		}
 		else {
+			move(4);	// stehl still; entferne, wenn planen move nutzt
 			planen();
 
 		}
