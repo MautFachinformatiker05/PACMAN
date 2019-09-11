@@ -263,7 +263,6 @@ public class Spielfeld extends JPanel{
 		rot.draw(g);
 		blau.draw(g);
 		gelb.draw(g);
-		repaint();
 	}
 
 
