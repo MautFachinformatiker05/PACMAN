@@ -96,6 +96,8 @@ public class Spielfeld extends JPanel{
 	GelberGeist gelb = new GelberGeist(GEIST_START_X, GEIST_START_Y, "gelb_geist.png");
 	long old_time = 0;
 	
+	int alte_richtung = 0;
+	
 	
 	
 	
@@ -232,6 +234,8 @@ public class Spielfeld extends JPanel{
 		}	
 		else if(feld[y][x]!=1 && feld[y][x]!=5) 
 		{
+			alte_richtung = pac_richtung;
+			
 			if(feld[y][x]==2)
 			{
 				score+= 10;
@@ -252,6 +256,8 @@ public class Spielfeld extends JPanel{
 			pac_x+=vx[pac_richtung];
 			pac_y+=vy[pac_richtung];
 		}
+		else
+			alte_richtung=4;
 
 	}
 	
@@ -274,7 +280,7 @@ public class Spielfeld extends JPanel{
 		int [] vx =  {+1, 0, -1, 0, 0}; 
 		int [] vy =  {0, +1, 0, -1, 0};
 		
-		g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[pac_richtung]), pac_y*size+(Game.frames*vy[pac_richtung]), this);
+		g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
 	}
 
 

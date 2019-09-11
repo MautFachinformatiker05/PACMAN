@@ -45,7 +45,10 @@ public class Game extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		
+		if(feld.pac_leben==0)
+			running = false;
+		
 		if (frames == 0)
 		{
 			if(running && feld.pac_leben!=0)
