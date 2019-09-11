@@ -15,7 +15,7 @@ public class Spielfeld extends JPanel{
 										"ro_wand.png","ru_wand.png","lo_wand.png","lu_wand.png",
 										"oru_wand.png","rul_wand.png","oul_wand.png","olr_wand.png","roul_wand.png",
 										"trennwand.png",
-										"punkt.png","power.png","pac_start.png","pac_eat1.png"}; 
+										"punkt.png","power.png","pac_start.png","pac_eat_o.png","pac_eat_r.png","pac_eat_u.png","pac_eat_l.png"}; 
 	static final int H_WAND = 			0;
 	static final int V_WAND = 			1;
 	static final int O_WAND = 			2;
@@ -35,7 +35,10 @@ public class Spielfeld extends JPanel{
 	static final int PUNKT_BILD = 		16;
 	static final int POWER_BILD = 		17;
 	static final int PAC_START = 		18;
-	static final int PAC_EAT1 = 		19;
+	static final int PAC_EAT_0 = 		19;
+	static final int PAC_EAT_R = 		20;
+	static final int PAC_EAT_U = 		21;
+	static final int PAC_EAT_L = 		22;
 	
 	static final int GEIST_START_X  =   11; 
 	static final int GEIST_START_Y  =   13;
@@ -281,7 +284,40 @@ public class Spielfeld extends JPanel{
 		int [] vx =  {+1, 0, -1, 0, 0}; 
 		int [] vy =  {0, +1, 0, -1, 0};
 		
-		g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
+		switch (alte_richtung) {
+		case 0:
+			if(Game.frames%10==0 || Game.frames%10==1 || Game.frames%10==2 || Game.frames%10==3 || Game.frames%10==4 || Game.frames%10==5)
+				g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
+			else
+				g.drawImage(bild_array[PAC_EAT_L], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);		
+			break;
+			
+		case 1:
+			if(Game.frames%10==0 || Game.frames%10==1 || Game.frames%10==2 || Game.frames%10==3 || Game.frames%10==4 || Game.frames%10==5)
+				g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
+			else
+				g.drawImage(bild_array[PAC_EAT_0], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);		
+			break;
+			
+		case 2:
+			if(Game.frames%10==0 || Game.frames%10==1 || Game.frames%10==2 || Game.frames%10==3 || Game.frames%10==4 || Game.frames%10==5)
+				g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
+			else
+				g.drawImage(bild_array[PAC_EAT_R], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);		
+			break;
+			
+		case 3:
+			if(Game.frames%10==0 || Game.frames%10==1 || Game.frames%10==2 || Game.frames%10==3 || Game.frames%10==4 || Game.frames%10==5)
+				g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
+			else
+				g.drawImage(bild_array[PAC_EAT_U], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);		
+			break;
+
+		default:
+			g.drawImage(bild_array[PAC_START], (pac_x-1)*size+(Game.frames*vx[alte_richtung]), pac_y*size+(Game.frames*vy[alte_richtung]), this);
+			break;
+		}
+		
 	}
 
 
@@ -362,7 +398,7 @@ public class Spielfeld extends JPanel{
 		
 		for(int i=0;i<pac_leben;i++)
 		{
-			g.drawImage(bild_array[PAC_EAT1], (int)((6.5+i*1.5)*size), 28*size, this);
+			g.drawImage(bild_array[PAC_EAT_R], (int)((6.5+i*1.5)*size), 28*size, this);
 		}
 		if (komplett==true)
 			feld = backup;
