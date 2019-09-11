@@ -41,8 +41,17 @@ public class BlauerGeist extends Geist {
 			xBewegung = 0;
 			yBewegung = -1;
 		}
-		geistX += xBewegung;
-		geistY += yBewegung;
+//		geistX += xBewegung;
+//		geistY += yBewegung;
+		
+		if(xBewegung>0)
+			move(RECHTS);
+		if(xBewegung<0)
+			move(LINKS);
+		if(yBewegung>0)
+			move(UNTEN);
+		if(yBewegung<0)
+			move(OBEN);
 		tunnel_teleport ();
 
 	}
