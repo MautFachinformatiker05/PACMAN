@@ -28,7 +28,7 @@ public class RoterGeist extends Geist {
 		}
 
 		// Wenn kein gerader Weg zum Ziel gefunden, ausprobieren
-		while (Game.feld.feld[geistY][geistX] == 1) {
+		while (isWall(geistY, geistX)) {
 
 			zufall = (int) (Math.random() * 4 + 1);
 			xWhile = xTemp;

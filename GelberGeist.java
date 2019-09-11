@@ -44,7 +44,7 @@ public class GelberGeist extends Geist {
 		}
 		
 		
-		while (Game.feld.feld[geistY][geistX]==1){
+		while (isWall(geistY, geistX)){
 
 		zufall=(int)(Math.random()*4+1);
 		xWhile=xTemp;

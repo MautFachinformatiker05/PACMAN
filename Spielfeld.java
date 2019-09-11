@@ -36,6 +36,8 @@ public class Spielfeld extends JPanel{
 	static final int POWER_BILD = 		17;
 	static final int PAC_START = 		18;
 	static final int PAC_EAT1 = 		19;
+	static final int GEIST_START_X  =   11; 
+	static final int GEIST_START_Y  =   12;
 	
 	static Image bild_array[] = new Image[filenames.length];
 	
@@ -89,9 +91,9 @@ public class Spielfeld extends JPanel{
 	public int pac_leben=5;
 	public int pac_richtung = 0; // l,o,r,u
 	public int score = 0;
-	RoterGeist rot = new RoterGeist(11, 11,"rot_geist.png");
-	BlauerGeist blau = new BlauerGeist(10, 10,"blau_geist.png");
-	GelberGeist gelb = new GelberGeist(9, 11, "gelb_geist.png");
+	RoterGeist rot = new RoterGeist(GEIST_START_X, GEIST_START_Y,"rot_geist.png");
+	BlauerGeist blau = new BlauerGeist(GEIST_START_X, GEIST_START_Y,"blau_geist.png");
+	GelberGeist gelb = new GelberGeist(GEIST_START_X, GEIST_START_Y, "gelb_geist.png");
 	
 	
 	

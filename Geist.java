@@ -11,6 +11,8 @@ public abstract class Geist {
 	int zielX;
 	int deathtimer;
 	int deathtimerPrevioustick;
+	boolean isPrison;
+	int prisonCounter;
 
 	public Geist(int _startX, int _startY, String bildText) {
 		this.geistX = _startX;
@@ -19,12 +21,17 @@ public abstract class Geist {
 		bild2 = (new ImageIcon("pupille.png").getImage());
 		deathtimer = 0;
 		deathtimerPrevioustick = 0;
+		isPrison=true;
+		prisonCounter=2;
 
 	}
 
 	void run(){
+		if (isPrison){
+			ausbrauch();
+		}
 		
-		 if ( this.deathtimerPrevioustick==1){
+		else if ( this.deathtimerPrevioustick==1){
 			this.respawn();
 			
 		}
@@ -41,10 +48,12 @@ public abstract class Geist {
 	}
 	
 	void respawn(){
-		this.geistX=10;
-		this.geistY=10;
+		this.geistX=Spielfeld.GEIST_START_X;
+		this.geistY=Spielfeld.GEIST_START_Y;
 		this.deathtimer=0;
 		this.deathtimerPrevioustick=0;
+		isPrison=true;
+		prisonCounter=2;
 	}
 	abstract void move();
 
@@ -71,7 +80,7 @@ public abstract class Geist {
 	}
 
 	boolean isWall(int _y, int _x) {
-		if (Game.feld.feld[_y][_x] == 1) {
+		if (Game.feld.feld[_y][_x] == 1 || Game.feld.feld[_y][_x] == 5 ) {
 			return true;
 		}
 
@@ -113,4 +122,14 @@ public abstract class Geist {
 
 		}
 	}
+	void ausbrauch(){
+		geistY--;
+		prisonCounter--;
+		if (prisonCounter==0){
+			isPrison=false;
+			System.out.println("Ausbrauch");
+			
+		}
+	}
+		
 }
