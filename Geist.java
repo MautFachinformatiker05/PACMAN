@@ -12,14 +12,14 @@ public abstract class Geist {
 	int zielX;
 	int deathtimer;
 	int deathtimerPrevioustick;
-	boolean isPrison;
-	int prisonCounter;
 	int alte_richtung = 4;
-	final int rechts =0;
-	final int links =3;
-	final int oben  =2;
-	final int unten =1;
-	int richtung;
+
+	final int RECHTS =  0;
+	final int UNTEN  =  1;
+	final int LINKS  =  2;
+	final int OBEN   =  3;
+
+	int richtung = 4;
 
 	public Geist(int _startX, int _startY, String bildText) {
 		this.geistX = _startX;
@@ -29,56 +29,63 @@ public abstract class Geist {
 		bild_schatten = (new ImageIcon("schatten_geist.png").getImage());
 		deathtimer = 0;
 		deathtimerPrevioustick = 0;
-		isPrison=true;
-		prisonCounter=2;
 
 	}
 
 	void run(){
-		if (isPrison){
-			ausbrauch();
-		}
-		
-		else if ( this.deathtimerPrevioustick==2){
-			this.respawn();
-			
-		}
-		 else if (this.deathtimer != 0){
-				this.deathtimerPrevioustick=this.deathtimer;
-				this.deathtimer--;
-				this.geistX=Spielfeld.GEIST_START_X;
-				this.geistY=Spielfeld.GEIST_START_Y;
-				
+		if ( (geistX>=10 && geistX<=12) && (geistY>=13 && geistY<=15) ){				// sorry, manuel
+			if (geistY==15 || geistY==13  || (geistX==11 && geistY==14)) {				// aber neue ausbruch-methode quasi
+				move(OBEN);																// nur wollen die Geister auf dem letzen Feld bleiben?!?  BUG
+				if(geistY==12)
+					alte_richtung = 4;
 			}
+			else if(geistX==12 && geistY==14) {
+				move(LINKS);
+			}
+			else if(geistX==10 && geistY==14) {
+				move(RECHTS);
+			}
+		}
+
+		else if ( this.deathtimerPrevioustick==1){
+			this.respawn();
+
+		}
+		else if (this.deathtimer != 0){
+			this.deathtimerPrevioustick=this.deathtimer;
+			this.deathtimer--;
+			this.geistX=Spielfeld.GEIST_START_X;
+			this.geistY=Spielfeld.GEIST_START_Y;
+
+		}
 		else {
 			planen();
-			
+
 		}
-		
+
 	}
-	 void move (int _richtung){
-		 int [] vx =  {+1, 0, -1, 0, 0}; 
-		 int [] vy =  {0, +1, 0, -1, 0};
-		 alte_richtung=_richtung;
-		 geistX+=vx[_richtung];
-		 geistY+=vy[_richtung];
-		 
-		 
-		 
-	 }
-	
+	void move (int _richtung){
+		int [] vx =  {+1, 0, -1, 0, 0}; 
+		int [] vy =  {0, +1, 0, -1, 0};
+		alte_richtung=_richtung;
+		geistX+=vx[_richtung];
+		geistY+=vy[_richtung];
+
+
+
+	}
+
 	void respawn(){
 		this.deathtimer=0;
 		this.deathtimerPrevioustick=0;
-		isPrison=true;
-		prisonCounter=2;
+
 	}
 	abstract void planen();
 
 	void draw(Graphics g) {
 		int [] vx =  {-1, 0, +1, 0, 0}; 
 		int [] vy =  {0, -1, 0, +1, 0};
-		
+
 		if (this.deathtimer == 0) {
 			int size = 20;
 			g.drawImage(bild, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vy[alte_richtung]), Game.feld);
@@ -91,12 +98,12 @@ public abstract class Geist {
 			}
 		}
 	}
-	
+
 	void draw_shadow(Graphics g)
-	 {
+	{
 		int [] vx =  {-1, 0, +1, 0, 0}; 
 		int [] vy =  {0, -1, 0, +1, 0};
-		
+
 		if (this.deathtimer == 0) {
 			int size = 20;
 			g.drawImage(bild_schatten, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vy[alte_richtung]), Game.feld);
@@ -151,15 +158,5 @@ public abstract class Geist {
 			}
 
 		}
-	}
-	void ausbrauch(){
-		geistY--;
-		prisonCounter--;
-		if (prisonCounter==0){
-			isPrison=false;
-			
-			
-		}
-	}
-		
+	}	
 }

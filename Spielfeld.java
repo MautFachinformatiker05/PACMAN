@@ -41,7 +41,7 @@ public class Spielfeld extends JPanel{
 	static final int PAC_EAT_L = 		22;
 	
 	static final int GEIST_START_X  =   11; 
-	static final int GEIST_START_Y  =   13;
+	static final int GEIST_START_Y  =   14;
 	
 	static Image bild_array[] = new Image[filenames.length];
 	
@@ -63,12 +63,12 @@ public class Spielfeld extends JPanel{
 			{0,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,2,1,0},
 			{0,1,2,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,2,1,0},
 			{0,1,2,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,1,0},
-			{0,1,1,1,1,1,2,1,1,1,2,2,2,1,1,1,2,1,1,1,1,1,0},
+			{0,1,1,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
 			{0,0,0,0,0,1,2,1,0,1,1,5,1,1,0,1,2,1,0,0,0,0,0},
 			{0,1,1,1,1,1,2,1,0,1,0,0,0,1,0,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,0,2,0,0,1,0,0,0,1,0,0,2,0,0,0,0,0,0},
-			{0,1,1,1,1,1,2,1,0,1,1,5,1,1,0,1,2,1,1,1,1,1,0},
+			{0,1,1,1,1,1,2,1,0,1,1,1,1,1,0,1,2,1,1,1,1,1,0},
 			{0,0,0,0,0,1,2,1,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0},
 			{0,0,0,0,0,1,2,1,0,1,1,1,1,1,0,1,2,1,0,0,0,0,0},
 			{0,1,1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1,1,0},
@@ -95,9 +95,10 @@ public class Spielfeld extends JPanel{
 	public int pac_leben=5;
 	public int pac_richtung = 0; // l,o,r,u
 	public int score = 0;
-	RoterGeist rot = new RoterGeist(GEIST_START_X, GEIST_START_Y,"rot_geist.png");
+	RoterGeist rot = new RoterGeist(GEIST_START_X-1, GEIST_START_Y,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(GEIST_START_X, GEIST_START_Y,"blau_geist.png");
-	GelberGeist gelb = new GelberGeist(GEIST_START_X, GEIST_START_Y, "gelb_geist.png");
+	GelberGeist gelb = new GelberGeist(GEIST_START_X+1, GEIST_START_Y, "gelb_geist.png");
+	GrauerGeist grau = new GrauerGeist(GEIST_START_X, GEIST_START_Y-1, "grau_geist.png");
 	long old_time = 0;
 	
 	int alte_richtung = 0;
@@ -177,6 +178,7 @@ public class Spielfeld extends JPanel{
 		rot.run();
 		blau.run();
 		gelb.run();
+//		grau.run();
 		pac_touch();
 		repaint();
 	}
@@ -184,7 +186,7 @@ public class Spielfeld extends JPanel{
 	private void pac_touch() {
 		
 		// Geist berührt? 
-		if (pac_x==rot.geistX && pac_y==rot.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY)
+		if (pac_x==rot.geistX && pac_y==rot.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY || pac_x==grau.geistX && pac_y==grau.geistY)
 		{
 			if (Game.frightened==false)
 			{
@@ -206,6 +208,10 @@ public class Spielfeld extends JPanel{
 				else if (pac_x==gelb.geistX && pac_y==gelb.geistY){
 					score+=100;
 					gelb.deathtimer=15;
+				}
+				else if (pac_x==grau.geistX && pac_y==grau.geistY){
+					score+=100;
+					grau.deathtimer=15;
 				}
 				
 			}

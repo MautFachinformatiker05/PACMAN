@@ -1,9 +1,9 @@
 public class GelberGeist extends Geist {
 
-	
+
 	public GelberGeist(int _startX, int _startY, String bildText) {
 		super(_startX, _startY, bildText);
-		
+
 	}
 
 	void planen(){
@@ -19,20 +19,20 @@ public class GelberGeist extends Geist {
 		int [] zielYX;
 		xTemp=geistX;
 		yTemp=geistY;
-		
-		
+
+
 		if (abstand(geistX, geistY, zielX, zielY)>5){
 			zielYX=sektorenVerteidiger();
 			zielY=zielYX[0];
 			zielX=zielYX[1];
-			
+
 		}
-		
-		
+
+
 		xTemp=geistX;
 		yTemp=geistY;
-		
-		
+
+
 		vyAchse=Integer.signum(zielY-geistY);
 		vxAchse=Integer.signum(zielX-geistX);
 		// Gerader Weg
@@ -42,62 +42,62 @@ public class GelberGeist extends Geist {
 		else{
 			geistX+=vxAchse;
 		}
-		
-		
+
+
 		while (isWall(geistY, geistX)){
 
-		zufall=(int)(Math.random()*4+1);
-		xWhile=xTemp;
-		yWhile=yTemp;
+			zufall=(int)(Math.random()*4+1);
+			xWhile=xTemp;
+			yWhile=yTemp;
 
-		if(zufall==1){
-			xWhile--;
+			if(zufall==1){
+				xWhile--;
+			}
+			else if (zufall==2){
+				xWhile++;
+			}
+			else if (zufall==3){
+				yWhile--;
+			}
+			else {
+				yWhile++;
+			}
+
+			geistX=xWhile;
+			geistY=yWhile;
+
+
+
 		}
-		else if (zufall==2){
-			xWhile++;
-		}
-		else if (zufall==3){
-			yWhile--;
-		}
-		else {
-			yWhile++;
-		}
-		
-		geistX=xWhile;
-		geistY=yWhile;
-		
-		
-		
-	}
-		
-		
+
+
 		tunnel_teleport ();
-		
-		
+
+
 	}
 
 	int [] sektorenVerteidiger(){
 		int zielX=0;
 		int zielY=0;
-		
+
 		int best_score=0;
 		int temp_score=0;
 		int best_sektor=0;
-		
+
 		final int ylength=27;
 		final int xlength=23;
-		
-		
+
+
 		for (int i=0;i <4;i++){
 			temp_score=bewertung(i);
 			if (temp_score>best_score){
 				best_score=temp_score;
 				best_sektor=i;
 			}
-			
+
 		}
 		int [] koord=new int [2];
-		
+
 		switch (best_sektor){
 		case 0:
 			zielY=ylength/4;
@@ -107,7 +107,7 @@ public class GelberGeist extends Geist {
 			zielY=ylength/4;
 			zielX=xlength/4*3;
 			break;
-		
+
 		case 2:
 			zielY=ylength/4*3;
 			zielX=xlength/4;
@@ -119,9 +119,9 @@ public class GelberGeist extends Geist {
 		}
 		koord[0]=zielY;
 		koord[1]=zielX;
-		
+
 		return koord;
-		
+
 	}
 	int bewertung(int sektor) {
 		int score = 0;
@@ -160,10 +160,10 @@ public class GelberGeist extends Geist {
 					score += aktuellesFeld;
 				}
 			}
-			
+
 		}
 
-		
+
 		return score;
 
 	}

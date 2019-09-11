@@ -7,7 +7,6 @@ public class GrauerGeist extends Geist {
 
 	}
 
-	@Override
 	void move() {
 		richtungen=new ArrayList<>();
 		zielY = Game.feld.pac_y;
@@ -19,6 +18,12 @@ public class GrauerGeist extends Geist {
 
 
 
+	}
+
+	@Override
+	void planen() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
