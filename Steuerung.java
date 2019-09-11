@@ -7,6 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Steuerung extends KeyAdapter {
+	
+	
+	public void keyReleased(KeyEvent e) {
+		
+		super.keyReleased(e);
+		Game.feld.pac_richtung=4;
+	}
 
 	@Override 
 	public void keyPressed(KeyEvent e){
@@ -18,6 +25,7 @@ public class Steuerung extends KeyAdapter {
 		int [] vy =  {0, -1, 0, +1};
 
 		switch (key_id){
+		
 		case KeyEvent.VK_LEFT: 
 //			System.out.println("L");
 			Game.feld.pac_richtung = 0;
@@ -33,7 +41,9 @@ public class Steuerung extends KeyAdapter {
 		case KeyEvent.VK_DOWN:
 //			System.out.println("D");
 			Game.feld.pac_richtung = 3; 
-			break; 
+			break;
+		
+		
 		}
 
 		//Schnittstelle (Bewegungsrichtung von Pacman wird geändert): 

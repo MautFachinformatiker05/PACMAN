@@ -217,8 +217,9 @@ public class Spielfeld extends JPanel{
 
 
 	public void pac_move() {
-		int [] vx =  {-1, 0, +1, 0}; 
-		int [] vy =  {0, -1, 0, +1};
+		
+		int [] vx =  {-1, 0, +1, 0, 0}; 
+		int [] vy =  {0, -1, 0, +1, 0};
 
 		int x = pac_x+vx[pac_richtung];
 		int y = pac_y+vy[pac_richtung];
@@ -278,7 +279,7 @@ public class Spielfeld extends JPanel{
 		
 		int size = 20;
 		boolean komplett = true;
-		old_time = System.currentTimeMillis();
+//		old_time = System.currentTimeMillis();
 		for(int y=0;y<28;y++)
 		{
 			for(int x=0;x<22;x++)
@@ -356,7 +357,7 @@ public class Spielfeld extends JPanel{
 		if (komplett==true)
 			feld = backup;
 		
-		long new_time = System.currentTimeMillis();
-		System.out.println("Delay: "+(new_time-old_time));
+//		long new_time = System.currentTimeMillis();
+//		System.out.println("Delay: "+(new_time-old_time));
 	}
 }
