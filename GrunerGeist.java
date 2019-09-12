@@ -52,13 +52,13 @@ public class GrunerGeist extends Geist {
 							astern.remove(dieses_element);
 						if(dieses_element[4]==0 || dieses_element[2]==10000)	// falls ein nicht bearbeitetes Element gefunden wurde ODER die Suche abgebrochen worden ist
 						{
-							Integer[] vergleich = bewertung(x+xi,y+yi);
+							Integer[] vergleich = bewertung(x+xi,y+yi,kachel);
 							if(dieses_element[2]==10000) {
-								astern.add(bewertung(x+xi,y+yi));
+								astern.add(bewertung(x+xi,y+yi,kachel));
 							}
-							else if((vergleich[2]+vergleich[3])<(dieses_element[2]+dieses_element[3])) {			//falls F-Cost bei neuer Berechnung kleiner sind
-								astern.set(astern.indexOf(dieses_element),vergleich);
-							}   }    }   }  
+						}
+					}
+				}   
 			}
 			kachel[4] = 1;
 			Integer[] nächstes_element = suche_kleinste_Fcost();
@@ -84,20 +84,17 @@ public class GrunerGeist extends Geist {
 		else return 4;			// keine Richtung, der nächste Funktionsaufruf wird das dann immer überschreiben
 	}
 
-	public Integer[] bewertung(int x, int y) {		// x, y, Kosten von Start, Kosten zu Ziel, Bearbeitet ja/nein
+	public Integer[] bewertung(int x, int y, Integer[] kachel) {		// x, y, Kosten von Start, Kosten zu Ziel, Bearbeitet ja/nein
 
-		return new Integer[]{x,y,bewertung_start(x, y),bewertung_ziel(x, y),0};
+		return new Integer[]{x,y,bewertung_start(x, y,kachel),bewertung_ziel(x, y),0};
 	}
 
-	public int bewertung_start(int x, int y) {
+	public int bewertung_start(int x, int y, Integer[] kachel) {
 
-		for (Integer[] integers : astern) {
-			if(integers[0]==vorheriges_x && integers[1]==vorheriges_y)
-			{
-				return integers[2]+1;
-			}
-		}
-		return 0;
+		int wert = 0;
+		wert += (int)Math.sqrt(((kachel[0]-x)*(kachel[0]-x)));
+		wert += (int)Math.sqrt(((kachel[1]-y)*(kachel[1]-y)));
+		return wert;
 	}
 
 	public int bewertung_ziel(int x, int y) {
