@@ -17,22 +17,22 @@ public class RoterGeist extends Geist {
 
 		if (vyAchse != 0) {
 
-			if (vyAchse < 0 && isWall(geistY - 1, geistX)) {
+			if (vyAchse < 0 && !isWall(geistY - 1, geistX)) {
 				richtung = OBEN;
 				geraderWegGefunden = true;
 			}
-			else if (vyAchse > 0 && isWall(geistY + 1, geistX)) {
+			else if (vyAchse > 0 && !isWall(geistY + 1, geistX)) {
 				richtung = UNTEN;
 				geraderWegGefunden = true;
 			} 
 		}
 		else {
 
-			if (vxAchse < 0 && isWall(geistY, geistX - 1)) {
+			if (vxAchse < 0 && !isWall(geistY, geistX - 1)) {
 				richtung = LINKS;
 				geraderWegGefunden = true;
 			}
-			else if (vxAchse > 0 && isWall(geistY, geistX + 1)) {
+			else if (vxAchse > 0 && !isWall(geistY, geistX + 1)) {
 				richtung = RECHTS;
 				geraderWegGefunden = true;
 			}
@@ -44,16 +44,16 @@ public class RoterGeist extends Geist {
 		while (!geraderWegGefunden) {
 			zufall = (int) (Math.random() * 4 + 1);
 
-			if (zufall == 1 && isWall(geistY - 1, geistX)) {
+			if (zufall == 1 && !isWall(geistY - 1, geistX)) {
 				richtung = OBEN;
 				geraderWegGefunden = true;
-			} else if (zufall == 2 && isWall(geistY + 1, geistX)) {
+			} else if (zufall == 2 && !isWall(geistY + 1, geistX)) {
 				richtung = UNTEN;
 				geraderWegGefunden = true;
-			} else if (zufall == 3 && isWall(geistY, geistX - 1)) {
+			} else if (zufall == 3 && !isWall(geistY, geistX - 1)) {
 				richtung = LINKS;
 				geraderWegGefunden = true;
-			} else if (zufall == 4 && isWall(geistY, geistX + 1)) {
+			} else if (zufall == 4 && !isWall(geistY, geistX + 1)) {
 				richtung = RECHTS;
 				geraderWegGefunden = true;
 			}
