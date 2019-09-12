@@ -7,78 +7,81 @@ public class GelberGeist extends Geist {
 	}
 
 	void planen(){
+		
 		zielX=Game.feld.pac_x;
 		zielY=Game.feld.pac_y;
-		int vxAchse=0;
-		int vyAchse=0;
-		int xTemp=0;
-		int yTemp=0;
-		int xWhile=0;
-		int yWhile=0;
-		int zufall=0;
-		int [] zielYX;
-		xTemp=geistX;
-		yTemp=geistY;
-
+		checkFrightened();
+		int zufall;
+		int counterSektor=0;
+		
+		
+		
 
 		if (abstand(geistX, geistY, zielX, zielY)>5){
-			zielYX=sektorenVerteidiger();
-			zielY=zielYX[0];
-			zielX=zielYX[1];
+			sektorenVerteidiger();
+			
 
 		}
-
-
-		xTemp=geistX;
-		yTemp=geistY;
-
-
-		vyAchse=Integer.signum(zielY-geistY);
-		vxAchse=Integer.signum(zielX-geistX);
+		
+		
+		boolean geraderWegGefunden = false;
+		int vyAchse = Integer.signum(zielY - geistY);
+		int vxAchse = Integer.signum(zielX - geistX);
 		// Gerader Weg
-		if (vyAchse!=0){
-			geistY+=vyAchse;
+
+		if (vyAchse != 0) {
+
+			if (vyAchse < 0 && !isWall(geistY - 1, geistX)) {
+				richtung = OBEN;
+				geraderWegGefunden = true;
+			}
+			else if (vyAchse > 0 && !isWall(geistY + 1, geistX)) {
+				richtung = UNTEN;
+				geraderWegGefunden = true;
+			} 
 		}
-		else{
-			geistX+=vxAchse;
-		}
+		else {
 
-
-		while (isWall(geistY, geistX)){
-
-			zufall=(int)(Math.random()*4+1);
-			xWhile=xTemp;
-			yWhile=yTemp;
-
-			if(zufall==1){
-				xWhile--;
+			if (vxAchse < 0 && !isWall(geistY, geistX - 1)) {
+				richtung = LINKS;
+				geraderWegGefunden = true;
 			}
-			else if (zufall==2){
-				xWhile++;
+			else if (vxAchse > 0 && !isWall(geistY, geistX + 1)) {
+				richtung = RECHTS;
+				geraderWegGefunden = true;
 			}
-			else if (zufall==3){
-				yWhile--;
-			}
-			else {
-				yWhile++;
-			}
-
-			geistX=xWhile;
-			geistY=yWhile;
-
-
 
 		}
 
+		// Wenn kein gerader Weg gefunden ausprobieren	
+		
+		while (!geraderWegGefunden) {
+			zufall = (int) (Math.random() * 4 + 1);
+
+			if (zufall == 1 && !isWall(geistY - 1, geistX)) {
+				richtung = OBEN;
+				geraderWegGefunden = true;
+			} else if (zufall == 2 && !isWall(geistY + 1, geistX)) {
+				richtung = UNTEN;
+				geraderWegGefunden = true;
+			} else if (zufall == 3 && !isWall(geistY, geistX - 1)) {
+				richtung = LINKS;
+				geraderWegGefunden = true;
+			} else if (zufall == 4 && !isWall(geistY, geistX + 1)) {
+				richtung = RECHTS;
+				geraderWegGefunden = true;
+			}
+
+		}
+		move(richtung);
 
 		tunnel_teleport ();
 
 
 	}
 
-	int [] sektorenVerteidiger(){
-		int zielX=0;
-		int zielY=0;
+	void  sektorenVerteidiger(){
+		
 
 		int best_score=0;
 		int temp_score=0;
@@ -96,7 +99,7 @@ public class GelberGeist extends Geist {
 			}
 
 		}
-		int [] koord=new int [2];
+	
 
 		switch (best_sektor){
 		case 0:
@@ -117,10 +120,7 @@ public class GelberGeist extends Geist {
 			zielX=xlength/4*3;
 			break;
 		}
-		koord[0]=zielY;
-		koord[1]=zielX;
-
-		return koord;
+		
 
 	}
 	int bewertung(int sektor) {
@@ -156,7 +156,7 @@ public class GelberGeist extends Geist {
 		for (int i = yStart; i < ySektor; i++) {
 			for (int j = xStart; j < xSektor; j++) {
 				aktuellesFeld = Game.feld.feld[i][j];
-				if (aktuellesFeld != 1) {
+				if (aktuellesFeld != 1 || aktuellesFeld !=5) {
 					score += aktuellesFeld;
 				}
 			}
