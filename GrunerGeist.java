@@ -54,7 +54,7 @@ public class GrunerGeist extends Geist {
 							if(dieses_element[2]==10000) {
 								astern.add(bewertung(x+xi,y+yi,kachel));
 							}
-							else if(vergleich[2]+vergleich[3]<dieses_element[2]+dieses_element[3])
+							else if(vergleich[0]+vergleich[1]<dieses_element[0]+dieses_element[1])
 								astern.set(astern.indexOf(dieses_element), vergleich);
 						}
 					}							// nach unten laufen muss behoben werden
