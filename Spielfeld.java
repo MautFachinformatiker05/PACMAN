@@ -96,10 +96,11 @@ public class Spielfeld extends JPanel{
 	public int pac_leben=5;
 	public int pac_richtung = 0; // l,o,r,u
 	public int score = 0;
-	RoterGeist rot = new RoterGeist(GEIST_START_X-1, GEIST_START_Y,"rot_geist.png");
+//	RoterGeist rot = new RoterGeist(GEIST_START_X-1, GEIST_START_Y,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(GEIST_START_X, GEIST_START_Y,"blau_geist.png");
 	GelberGeist gelb = new GelberGeist(GEIST_START_X+1, GEIST_START_Y, "gelb_geist.png");
 	GrauerGeist grau = new GrauerGeist(GEIST_START_X, GEIST_START_Y-1, "grau_geist.png");
+	GrunerGeist grun = new GrunerGeist(GEIST_START_X-1, GEIST_START_Y,"grün_geist.png");
 	long old_time = 0;
 	
 	int alte_richtung = 0;
@@ -118,7 +119,7 @@ public class Spielfeld extends JPanel{
 	}
 
 
-	public void ausgabe_konsole()
+	/*public void ausgabe_konsole()
 	{
 		for(int y=0;y<feld.length;y++)
 		{
@@ -170,17 +171,18 @@ public class Spielfeld extends JPanel{
 		System.out.println();
 		System.out.println();
 		System.out.println();
-	}
+	} */
 
 	public void update()
 	{
 //		ausgabe_konsole();
 		pac_move();
 		pac_touch();
-		rot.run();
+//		rot.run();
 		blau.run();
 		gelb.run();
 		grau.run();
+		grun.run();
 		pac_touch();
 		fright();
 		repaint();
@@ -189,7 +191,7 @@ public class Spielfeld extends JPanel{
 	private void pac_touch() {
 		
 		// Geist berührt? 
-		if (pac_x==rot.geistX && pac_y==rot.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY || pac_x==grau.geistX && pac_y==grau.geistY)
+		if (pac_x==grun.geistX && pac_y==grun.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY || pac_x==grau.geistX && pac_y==grau.geistY)
 		{
 			if (Game.frightened==false)
 			{
@@ -200,9 +202,9 @@ public class Spielfeld extends JPanel{
 			}
 			else
 			{
-				if (pac_x==rot.geistX && pac_y==rot.geistY){
+				if (pac_x==grun.geistX && pac_y==grun.geistY){
 				score+=100;
-				rot.deathtimer=15;
+				grun.deathtimer=15;
 				}
 				else if (pac_x==blau.geistX && pac_y==blau.geistY){
 					score+=100;
@@ -286,18 +288,20 @@ public class Spielfeld extends JPanel{
 		spielfeld_zeichnen(g);
 		pacman_zeichnen(g);
 		
-		rot.draw_shadow(g);
+//		rot.draw_shadow(g);
 		blau.draw_shadow(g);
 		gelb.draw_shadow(g);
 		grau.draw_shadow(g);
+		grun.draw_shadow(g);
 		
 		Graphics2D g2D = (Graphics2D) g;
 		g2D.setComposite(MultiplyComposite.Multiply);
 		
-		rot.draw(g2D);
+//		rot.draw(g2D);
 		blau.draw(g2D);
 		gelb.draw(g2D);
 		grau.draw(g2D);
+		grun.draw(g2D);
 		
 //		long new_time = System.currentTimeMillis();
 //		System.out.println("Draw Time: "+(new_time-old_time));
