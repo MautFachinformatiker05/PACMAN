@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -279,6 +280,8 @@ public class Spielfeld extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		
+//		long old_time = System.currentTimeMillis();
+		
 		super.paintComponent(g);
 		spielfeld_zeichnen(g);
 		pacman_zeichnen(g);
@@ -288,10 +291,16 @@ public class Spielfeld extends JPanel{
 		gelb.draw_shadow(g);
 		grau.draw_shadow(g);
 		
-		rot.draw(g);
-		blau.draw(g);
-		gelb.draw(g);
-		grau.draw(g);
+		Graphics2D g2D = (Graphics2D) g;
+		g2D.setComposite(MultiplyComposite.Multiply);
+		
+		rot.draw(g2D);
+		blau.draw(g2D);
+		gelb.draw(g2D);
+		grau.draw(g2D);
+		
+//		long new_time = System.currentTimeMillis();
+//		System.out.println("Draw Time: "+(new_time-old_time));
 	}
 
 

@@ -1,3 +1,11 @@
+import java.awt.Composite;
+import java.awt.CompositeContext;
+import java.awt.RenderingHints;
+import java.awt.image.ColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.Raster;
+import java.awt.image.WritableRaster;
+
 public class MultiplyComposite implements Composite, CompositeContext {     // von Stackoverflow
     protected void checkRaster(Raster r) {
         if (r.getSampleModel().getDataType() != DataBuffer.TYPE_INT) {
