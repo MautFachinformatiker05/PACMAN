@@ -48,18 +48,18 @@ public class GrunerGeist extends Geist {
 					if(!(xi==0 && yi==0) && !isWall(y+yi,x+xi))		// die kachel wird natürlich ausgelassen
 					{
 						Integer[] dieses_element = suche_nach_nicht_bearbeitet(x+xi,y+yi);
-						for(int i=0;i<100;i++)
-							astern.remove(dieses_element);
 						if(dieses_element[4]==0 || dieses_element[2]==10000)	// falls ein nicht bearbeitetes Element gefunden wurde ODER die Suche abgebrochen worden ist
 						{
 							Integer[] vergleich = bewertung(x+xi,y+yi,kachel);
 							if(dieses_element[2]==10000) {
 								astern.add(bewertung(x+xi,y+yi,kachel));
 							}
+							else if(vergleich[2]+vergleich[3]<dieses_element[2]+dieses_element[3])
+								astern.set(astern.indexOf(dieses_element), vergleich);
 						}
-					}
-				}   
-			}
+					}							// nach unten laufen muss behoben werden
+				}   							// doppelte Elemente müssen behoben werden
+			}									// Absturz muss behoben werden
 			kachel[4] = 1;
 			Integer[] nächstes_element = suche_kleinste_Fcost();
 			if (nächstes_element[4]==0)
@@ -70,7 +70,7 @@ public class GrunerGeist extends Geist {
 	}
 
 	public int richtung_bestimmen(Integer[] kachel) {
-		if (kachel[2]<1)	// Direkt daneben?
+		if (kachel[2]==1)	// Direkt daneben?
 		{
 			if(kachel[0]<geistX)
 				return LINKS;
@@ -78,8 +78,10 @@ public class GrunerGeist extends Geist {
 				return RECHTS;
 			else if(kachel[1]<geistY)
 				return OBEN;
-			else
+			else if(kachel[1]>geistY)
 				return UNTEN;
+			else
+				return 4;
 		}
 		else return 4;			// keine Richtung, der nächste Funktionsaufruf wird das dann immer überschreiben
 	}
