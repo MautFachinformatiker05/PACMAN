@@ -13,6 +13,7 @@ public abstract class Geist {
 	int deathtimer;
 	int deathtimerPrevioustick;
 	int alte_richtung = 4;
+	int gespeicherteRichtung;
 
 	final int RECHTS =  0;
 	final int UNTEN  =  1;
@@ -69,6 +70,9 @@ public abstract class Geist {
 		alte_richtung=_richtung;
 		geistX+=vx[_richtung];
 		geistY+=vy[_richtung];
+		if ( _richtung!=4){
+			gespeicherteRichtung=_richtung;
+		}
 
 
 

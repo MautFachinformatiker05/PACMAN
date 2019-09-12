@@ -99,7 +99,7 @@ public class Spielfeld extends JPanel{
 //	RoterGeist rot = new RoterGeist(GEIST_START_X-1, GEIST_START_Y,"rot_geist.png");
 	BlauerGeist blau = new BlauerGeist(GEIST_START_X, GEIST_START_Y,"blau_geist.png");
 	GelberGeist gelb = new GelberGeist(GEIST_START_X+1, GEIST_START_Y, "gelb_geist.png");
-	GrauerGeist grau = new GrauerGeist(GEIST_START_X, GEIST_START_Y-1, "grau_geist.png");
+//	GrauerGeist grau = new GrauerGeist(GEIST_START_X, GEIST_START_Y-1, "grau_geist.png");
 	GrunerGeist grun = new GrunerGeist(GEIST_START_X-1, GEIST_START_Y,"grün_geist.png");
 	long old_time = 0;
 	
@@ -181,7 +181,7 @@ public class Spielfeld extends JPanel{
 //		rot.run();
 		blau.run();
 		gelb.run();
-		grau.run();
+//		grau.run();
 		grun.run();
 		pac_touch();
 		fright();
@@ -191,7 +191,7 @@ public class Spielfeld extends JPanel{
 	private void pac_touch() {
 		
 		// Geist berührt? 
-		if (pac_x==grun.geistX && pac_y==grun.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY || pac_x==grau.geistX && pac_y==grau.geistY)
+		if (pac_x==grun.geistX && pac_y==grun.geistY || pac_x==blau.geistX && pac_y==blau.geistY || pac_x==gelb.geistX && pac_y==gelb.geistY) // || pac_x==grau.geistX && pac_y==grau.geistY)
 		{
 			if (Game.frightened==false)
 			{
@@ -214,10 +214,10 @@ public class Spielfeld extends JPanel{
 					score+=100;
 					gelb.deathtimer=15;
 				}
-				else if (pac_x==grau.geistX && pac_y==grau.geistY){
-					score+=100;
-					grau.deathtimer=15;
-				}
+//				else if (pac_x==grau.geistX && pac_y==grau.geistY){
+//					score+=100;
+//					grau.deathtimer=15;
+//				}
 				
 			}
 		}	
@@ -291,7 +291,7 @@ public class Spielfeld extends JPanel{
 //		rot.draw_shadow(g);
 		blau.draw_shadow(g);
 		gelb.draw_shadow(g);
-		grau.draw_shadow(g);
+//		grau.draw_shadow(g);
 		grun.draw_shadow(g);
 		
 		Graphics2D g2D = (Graphics2D) g;
@@ -300,7 +300,7 @@ public class Spielfeld extends JPanel{
 //		rot.draw(g2D);
 		blau.draw(g2D);
 		gelb.draw(g2D);
-		grau.draw(g2D);
+//		grau.draw(g2D);
 		grun.draw(g2D);
 		
 //		long new_time = System.currentTimeMillis();
