@@ -11,7 +11,6 @@ public abstract class Geist {
 	int zielY;
 	int zielX;
 	int deathtimer;
-	int deathtimerPrevioustick;
 	int alte_richtung = 4;
 	int gespeicherteRichtung;
 
@@ -19,8 +18,10 @@ public abstract class Geist {
 	final int UNTEN  =  1;
 	final int LINKS  =  2;
 	final int OBEN   =  3;
+	final int NEUTRAL=4;
+	final int DEATHTIME=15;
 
-	int richtung = 4;
+	int richtung = NEUTRAL;
 
 	public Geist(int _startX, int _startY, String bildText) {
 		this.geistX = _startX;
@@ -29,7 +30,7 @@ public abstract class Geist {
 		bild2 = (new ImageIcon("pupille.png").getImage());
 		bild_schatten = (new ImageIcon("schatten_geist.png").getImage());
 		deathtimer = 0;
-		deathtimerPrevioustick = 0;
+		
 
 	}
 
@@ -47,18 +48,18 @@ public abstract class Geist {
 			}
 		}
 
-		else if ( this.deathtimerPrevioustick==1){
+		else if ( this.deathtimer==1){
 			this.respawn();
 
 		}
-		else if (this.deathtimer != 0){
-			this.deathtimerPrevioustick=this.deathtimer;
+		else if (this.deathtimer > 1){
+			
 			this.deathtimer--;
 			this.geistX=Spielfeld.GEIST_START_X;
 			this.geistY=Spielfeld.GEIST_START_Y;
 		}
 		else {
-			move(4);	// stehl still; entferne, wenn planen move nutzt
+			move(NEUTRAL);	// stehl still; entferne, wenn planen move nutzt
 			planen();
 
 		}
@@ -70,7 +71,7 @@ public abstract class Geist {
 		alte_richtung=_richtung;
 		geistX+=vx[_richtung];
 		geistY+=vy[_richtung];
-		if ( _richtung!=4){
+		if ( _richtung!=NEUTRAL){
 			gespeicherteRichtung=_richtung;
 		}
 
@@ -80,9 +81,8 @@ public abstract class Geist {
 
 	void respawn(){
 		this.deathtimer=0;
-		this.deathtimerPrevioustick=0;
-
-	}
+		}
+	
 	abstract void planen();
 
 	void draw(Graphics g) {
@@ -161,5 +161,8 @@ public abstract class Geist {
 			}
 
 		}
-	}	
+	}
+	void death(){
+		this.deathtimer=DEATHTIME;
+	}
 }
