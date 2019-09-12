@@ -34,16 +34,16 @@ public class GrauerGeist extends Geist {
 		if (isTunnel() && tunnelCounter==0){
 			
 			if (gespeicherteRichtung==LINKS){
-				tunnelCounter=checkHorizTunnelLeft();
+				tunnelCounter=lengthHorizTunnelLeft();
 			}
 			else if (gespeicherteRichtung==RECHTS){
-				tunnelCounter=checkHorizTunnelRight();
+				tunnelCounter=lengthHorizTunnelRight();
 			}
 			else if ( gespeicherteRichtung==OBEN){
-				tunnelCounter=checkVertTunnelUp();
+				tunnelCounter=lengthVertTunnelUp();
 			}
 			else if (gespeicherteRichtung==UNTEN){
-				tunnelCounter=checkVertTunnelDown();
+				tunnelCounter=lengthVertTunnelDown();
 			}
 			System.out.println("Erhöhe Tunnelzähler jetzt bei " +tunnelCounter);
 		}
@@ -117,7 +117,7 @@ public class GrauerGeist extends Geist {
 		return false;
 	}
 	
-	int checkVertTunnelDown(){
+	int lengthVertTunnelDown(){
 		int tunnelLength=0;
 		for (int i=0;i<10;i++){
 			if (geistY+i>26){
@@ -130,7 +130,7 @@ public class GrauerGeist extends Geist {
 		return tunnelLength;
 	}
 	
-	int checkVertTunnelUp(){
+	int lengthVertTunnelUp(){
 		int tunnelLength=0;
 		for (int i=0;i<10;i++){
 			if (geistY-i<0){
@@ -143,7 +143,7 @@ public class GrauerGeist extends Geist {
 		return tunnelLength;
 	}
 	
-	int checkHorizTunnelRight(){
+	int lengthHorizTunnelRight(){
 		int tunnelLength=0;
 		for (int i=0;i<10;i++){
 			if (geistX+i>23){
@@ -155,7 +155,7 @@ public class GrauerGeist extends Geist {
 		}
 		return tunnelLength;
 	}
-	int checkHorizTunnelLeft(){
+	int lengthHorizTunnelLeft(){
 		int tunnelLength=0;
 		for (int i=0;i<10;i++){
 			if (geistX-i<0){
