@@ -175,11 +175,13 @@ public class Spielfeld extends JPanel{
 	{
 //		ausgabe_konsole();
 		pac_move();
+		pac_touch();
 		rot.run();
 		blau.run();
 		gelb.run();
 		grau.run();
 		pac_touch();
+		fright();
 		repaint();
 	}
 
@@ -215,7 +217,11 @@ public class Spielfeld extends JPanel{
 				}
 				
 			}
-		}
+		}	
+	}
+
+
+	public void fright() {
 		// Frightened?
 		if (Game.counter > 0)
 		{
@@ -224,7 +230,6 @@ public class Spielfeld extends JPanel{
 		else {
 			Game.frightened = false;
 		}
-		
 	}
 
 
