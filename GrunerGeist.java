@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class GrunerGeist extends Geist {
@@ -11,7 +12,8 @@ public class GrunerGeist extends Geist {
 
 	}
 
-	void planen() {
+	void planen() {			
+		astern.clear();
 		ziel_x = Game.feld.pac_x;
 		ziel_y = Game.feld.pac_y;
 		astern.add(new Integer[]{geistX,geistY,0,bewertung_ziel(geistX, geistY),1});		// x, y, Kosten von Start, Kosten zu Ziel, Bearbeitet ja/nein
@@ -36,7 +38,7 @@ public class GrunerGeist extends Geist {
 			{
 				for(int yi = -1; yi<=1;yi++)
 				{
-					if(xi!=0 && yi!=0)		// die kachel wird natürlich ausgelassen
+					if(!(xi==0 && yi==0) && !isWall(y+yi,x+xi))		// die kachel wird natürlich ausgelassen
 					{
 						Integer[] dieses_element = suche_nach_nicht_bearbeitet(x+xi,y+yi);
 
@@ -46,11 +48,14 @@ public class GrunerGeist extends Geist {
 							if((vergleich[2]+vergleich[3])<(dieses_element[2]+dieses_element[3])) {			//falls F-Cost bei neuer Berechnung kleiner sind
 								astern.add(vergleich);
 							}
-							if(dieses_element[2]==10000) {
+							else if(dieses_element[2]==10000) {
 								astern.add(bewertung(x+xi,y+yi));
 							}   }    }   }  }
 			kachel[4] = 1;
-			astern_rekursion(suche_kleinste_Fcost());	// mache mit kleinster Fcost weiter
+			Integer[] nächstes_element = suche_kleinste_Fcost();
+			if (nächstes_element[4]==0)
+				astern_rekursion(nächstes_element);	// mache mit kleinster Fcost weiter
+			
 			return richtung_bestimmen(kachel);
 		}
 	}

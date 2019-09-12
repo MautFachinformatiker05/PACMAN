@@ -8,6 +8,8 @@ public abstract class Geist {
 	Image bild;
 	Image bild2;
 	Image bild_schatten;
+	public Image debug_green;
+	Image debug_red;
 	int zielY;
 	int zielX;
 	int deathtimer;
@@ -29,6 +31,8 @@ public abstract class Geist {
 		bild = (new ImageIcon(bildText).getImage());
 		bild2 = (new ImageIcon("pupille.png").getImage());
 		bild_schatten = (new ImageIcon("schatten_geist.png").getImage());
+		debug_green = (new ImageIcon("grun_feld.png").getImage());
+		debug_red = (new ImageIcon("rot_feld.png").getImage());
 		deathtimer = 0;
 		
 
@@ -111,6 +115,16 @@ public abstract class Geist {
 			int size = 20;
 			g.drawImage(bild_schatten, (geistX - 1) * size+(Game.frames*vx[alte_richtung]), geistY * size+(Game.frames*vy[alte_richtung]), Game.feld);
 		}
+	}
+	
+	void draw_debug_green(Graphics g, int x_coor, int y_coor) {
+		int size = 20;
+		g.drawImage(debug_green, (x_coor - 1) * size, y_coor * size, Game.feld);
+	}
+	
+	void draw_debug_red(Graphics g, int x_coor, int y_coor) {
+		int size = 20;
+		g.drawImage(debug_red, (x_coor - 1) * size, y_coor * size, Game.feld);
 	}
 
 	double abstand(double _startX, double _startY, double _zielX, double _zielY) {

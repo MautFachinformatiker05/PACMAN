@@ -282,8 +282,7 @@ public class Spielfeld extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		
-//		long old_time = System.currentTimeMillis();
-		
+
 		super.paintComponent(g);
 		spielfeld_zeichnen(g);
 		pacman_zeichnen(g);
@@ -294,6 +293,11 @@ public class Spielfeld extends JPanel{
 //		grau.draw_shadow(g);
 		grun.draw_shadow(g);
 		
+		Image debug_green = (new ImageIcon("grun_feld.png").getImage());
+		for (Integer[] inte : grun.astern) {
+			g.drawImage(debug_green, (inte[0]-1)*20, inte[1]*20, this);
+		}
+		
 		Graphics2D g2D = (Graphics2D) g;
 		g2D.setComposite(MultiplyComposite.Multiply);
 		
@@ -303,8 +307,8 @@ public class Spielfeld extends JPanel{
 //		grau.draw(g2D);
 		grun.draw(g2D);
 		
-//		long new_time = System.currentTimeMillis();
-//		System.out.println("Draw Time: "+(new_time-old_time));
+		
+
 	}
 
 
