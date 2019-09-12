@@ -6,6 +6,8 @@ public class GrunerGeist extends Geist {
 	int ziel_x ;
 	int ziel_y ;
 	int neue_richtung = 4;
+	int vorheriges_x = geistX;
+	int vorheriges_y = geistY;
 	int zahl = 0;
 	int zahl2 = 0;
 
@@ -46,7 +48,8 @@ public class GrunerGeist extends Geist {
 					if(!(xi==0 && yi==0) && !isWall(y+yi,x+xi))		// die kachel wird natürlich ausgelassen
 					{
 						Integer[] dieses_element = suche_nach_nicht_bearbeitet(x+xi,y+yi);
-
+						for(int i=0;i<100;i++)
+							astern.remove(dieses_element);
 						if(dieses_element[4]==0 || dieses_element[2]==10000)	// falls ein nicht bearbeitetes Element gefunden wurde ODER die Suche abgebrochen worden ist
 						{
 							Integer[] vergleich = bewertung(x+xi,y+yi);
@@ -55,9 +58,9 @@ public class GrunerGeist extends Geist {
 							}
 							else if((vergleich[2]+vergleich[3])<(dieses_element[2]+dieses_element[3])) {			//falls F-Cost bei neuer Berechnung kleiner sind
 								astern.set(astern.indexOf(dieses_element),vergleich);
-							}   }    }   }  }
+							}   }    }   }  
+			}
 			kachel[4] = 1;
-			duplikate_zerstören();
 			Integer[] nächstes_element = suche_kleinste_Fcost();
 			if (nächstes_element[4]==0)
 				astern_rekursion(nächstes_element);	// mache mit kleinster Fcost weiter
@@ -88,9 +91,13 @@ public class GrunerGeist extends Geist {
 
 	public int bewertung_start(int x, int y) {
 
-		int x_wert = (int)Math.sqrt(((geistX-x)*(geistX-x)));
-		int y_wert = (int)Math.sqrt(((geistY-y)*(geistY-y)));
-		return x_wert+y_wert;
+		for (Integer[] integers : astern) {
+			if(integers[0]==vorheriges_x && integers[1]==vorheriges_y)
+			{
+				return integers[2]+1;
+			}
+		}
+		return 0;
 	}
 
 	public int bewertung_ziel(int x, int y) {
@@ -121,25 +128,5 @@ public class GrunerGeist extends Geist {
 			}
 		}
 		return gewinner;
-	}
-	
-	public void duplikate_zerstören()
-	{
-		int zahl = 0;
-		ArrayList<Integer[]> astern2 = new ArrayList<Integer[]>();
-		for (Integer[] integers : astern) {
-			for (Integer[] integers2 : astern2) {
-				if (integers[1]==integers2[1] && integers[0]==integers2[0])
-				{
-					astern.remove(integers);
-					zahl++;
-					System.out.println(zahl+" Duplikate zerstört.");
-				}
-				else
-				{
-					astern2.add(integers);
-				}
-			}
-		}
 	}
 }
