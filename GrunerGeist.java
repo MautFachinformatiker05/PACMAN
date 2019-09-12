@@ -6,6 +6,8 @@ public class GrunerGeist extends Geist {
 	int ziel_x ;
 	int ziel_y ;
 	int neue_richtung = 4;
+	int zahl = 0;
+	int zahl2 = 0;
 
 	public GrunerGeist(int _startX, int _startY, String bildText) {
 		super(_startX, _startY, bildText);
@@ -14,10 +16,12 @@ public class GrunerGeist extends Geist {
 
 	void planen() {			
 		astern.clear();
+		zahl = 0;
 		ziel_x = Game.feld.pac_x;
 		ziel_y = Game.feld.pac_y;
 		astern.add(new Integer[]{geistX,geistY,0,bewertung_ziel(geistX, geistY),1});		// x, y, Kosten von Start, Kosten zu Ziel, Bearbeitet ja/nein
 		neue_richtung = astern_rekursion(astern.get(0));
+		System.out.println("Anzahl Aufrufe: "+zahl+"\t Listenobjekte: "+astern.size());
 		move(neue_richtung);
 		tunnel_teleport ();		// 0->21		22->1
 
@@ -25,6 +29,7 @@ public class GrunerGeist extends Geist {
 
 	public int astern_rekursion(Integer[] kachel) {
 
+		zahl++;
 		if(kachel[3]==0)	// Kosten zum Ziel
 		{
 			return richtung_bestimmen(kachel);
@@ -124,7 +129,7 @@ public class GrunerGeist extends Geist {
 		ArrayList<Integer[]> astern2 = new ArrayList<Integer[]>();
 		for (Integer[] integers : astern) {
 			for (Integer[] integers2 : astern2) {
-				if (integers==integers2)
+				if (integers[1]==integers2[1] && integers[0]==integers2[0])
 				{
 					astern.remove(integers);
 					zahl++;
