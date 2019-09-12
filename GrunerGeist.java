@@ -45,17 +45,18 @@ public class GrunerGeist extends Geist {
 						if(dieses_element[4]==0 || dieses_element[2]==10000)	// falls ein nicht bearbeitetes Element gefunden wurde ODER die Suche abgebrochen worden ist
 						{
 							Integer[] vergleich = bewertung(x+xi,y+yi);
-							if((vergleich[2]+vergleich[3])<(dieses_element[2]+dieses_element[3])) {			//falls F-Cost bei neuer Berechnung kleiner sind
-								astern.add(vergleich);
-							}
-							else if(dieses_element[2]==10000) {
+							if(dieses_element[2]==10000) {
 								astern.add(bewertung(x+xi,y+yi));
+							}
+							else if((vergleich[2]+vergleich[3])<(dieses_element[2]+dieses_element[3])) {			//falls F-Cost bei neuer Berechnung kleiner sind
+								astern.set(astern.indexOf(dieses_element),vergleich);
 							}   }    }   }  }
 			kachel[4] = 1;
+			duplikate_zerstören();
 			Integer[] nächstes_element = suche_kleinste_Fcost();
 			if (nächstes_element[4]==0)
 				astern_rekursion(nächstes_element);	// mache mit kleinster Fcost weiter
-			
+
 			return richtung_bestimmen(kachel);
 		}
 	}
@@ -115,5 +116,25 @@ public class GrunerGeist extends Geist {
 			}
 		}
 		return gewinner;
+	}
+	
+	public void duplikate_zerstören()
+	{
+		int zahl = 0;
+		ArrayList<Integer[]> astern2 = new ArrayList<Integer[]>();
+		for (Integer[] integers : astern) {
+			for (Integer[] integers2 : astern2) {
+				if (integers==integers2)
+				{
+					astern.remove(integers);
+					zahl++;
+					System.out.println(zahl+" Duplikate zerstört.");
+				}
+				else
+				{
+					astern2.add(integers);
+				}
+			}
+		}
 	}
 }
