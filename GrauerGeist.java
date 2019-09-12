@@ -33,23 +33,23 @@ public class GrauerGeist extends Geist {
 		
 		if (isTunnel() && tunnelCounter==0){
 			
-			if (alte_richtung==LINKS){
+			if (gespeicherteRichtung==LINKS){
 				tunnelCounter=checkHorizTunnelLeft();
 			}
-			else if (alte_richtung==RECHTS){
+			else if (gespeicherteRichtung==RECHTS){
 				tunnelCounter=checkHorizTunnelRight();
 			}
-			else if ( alte_richtung==OBEN){
+			else if ( gespeicherteRichtung==OBEN){
 				tunnelCounter=checkVertTunnelUp();
 			}
-			else if (alte_richtung==UNTEN){
+			else if (gespeicherteRichtung==UNTEN){
 				tunnelCounter=checkVertTunnelDown();
 			}
 			System.out.println("Erhöhe Tunnelzähler jetzt bei " +tunnelCounter);
 		}
 		
 		if (tunnelCounter>0){
-			move(alte_richtung);
+			move(gespeicherteRichtung);
 			System.out.println("Denke ich bin im Tunnel, Länge " +tunnelCounter);
 			tunnelCounter--;
 		}
@@ -101,14 +101,14 @@ public class GrauerGeist extends Geist {
 	
 	boolean isTunnel(){
 		
-		System.out.println(alte_richtung);
-		if ((alte_richtung==RECHTS || alte_richtung==LINKS) && isUpDownDoubleWall(geistY, geistX) ){
+		System.out.println(gespeicherteRichtung);
+		if ((gespeicherteRichtung==RECHTS || gespeicherteRichtung==LINKS) && isUpDownDoubleWall(geistY, geistX) ){
 			System.out.println("Oben Unten Mauer isTunnel");
 			return true;
 			
 			
 		}
-		else if ((alte_richtung==OBEN || alte_richtung==UNTEN) && isLeftRightDoubleWall(geistY, geistX)){
+		else if ((gespeicherteRichtung==OBEN || gespeicherteRichtung==UNTEN) && isLeftRightDoubleWall(geistY, geistX)){
 			System.out.println("Links Rechts Mauer isTunnel");
 			return true;
 		}
