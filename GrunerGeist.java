@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class GrunerGeist extends Geist {
 	ArrayList<Integer[]> astern = new ArrayList<Integer[]>();
-	int ziel_x = Game.feld.pac_x;
-	int ziel_y = Game.feld.pac_y;
+	int ziel_x ;
+	int ziel_y ;
 	int neue_richtung = 4;
 
 	public GrunerGeist(int _startX, int _startY, String bildText) {
@@ -12,8 +12,8 @@ public class GrunerGeist extends Geist {
 	}
 
 	void planen() {
-
-
+		ziel_x = Game.feld.pac_x;
+		ziel_y = Game.feld.pac_y;
 		astern.add(new Integer[]{geistX,geistY,0,bewertung_ziel(geistX, geistY),1});		// x, y, Kosten von Start, Kosten zu Ziel, Bearbeitet ja/nein
 		neue_richtung = astern_rekursion(astern.get(0));
 		move(neue_richtung);
